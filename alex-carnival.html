@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project One — Your Name</title>
+  <title>Alex & Carnival — Lexi Randt</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -20,7 +20,10 @@
   <nav class="nav">
     <div class="nav__inner">
 
-      <a class="nav__logo" href="index.html">Lexi Randt</a>
+      <a class="nav__logo" href="index.html" aria-label="Home">
+        <img src="images/logo.png" alt="Lexi Randt" style="height: 80px; width: auto; display: block;" />
+      </a>
+      <!-- <a class="nav__logo" href="index.html">Lexi Randt</a> -->
 
       <ul class="nav__links" id="navLinks">
         <li><a href="index.html">Home</a></li>
@@ -38,61 +41,76 @@
 
   <!-- ===================== TITLE & META =====================
   ========================================================== -->
+  <div class="project-title container--text">
 
+    <p class="label">Brand Guidelines</p>
+    <h1>Alex & Carnival Brand Guidelines</h1>
 
-  </div>
-
-  <section class="pdf-embed section" style="margin-top: -50px;">
-    <div class="container">
-
-
-      <p class="pdf-embed__label">Brand Guidelines</p>
-      <h2 style="font-size: 60px;" class="pdf-embed__title">Alex & Carnival</h2>
+    <div class="project-meta">
 
       <div class="project-meta__overview">
         <p class="label">Overview</p>
         This is a personal project I made over the Summer of 2025 for a concept jewelry company. <br>
-        These Brand Guidelines include the brand story, color palettes, typography rules, logo usage, 
+        These Brand Guidelines include the brand story, color palettes, typography rules, logo usage,
         and overall impression of Alex & Carnival.
-        <br> <br>
-      </div>
-
-      <iframe class="pdf-embed__frame pdf-embed__frame--scroll" src="images/acbg.pdf"
-        title="Alex Carnival Brand Guidelines" loading="lazy"></iframe>
-
-      <p class="pdf-embed__fallback" id="docFallback">
-        Your browser can't display PDFs inline.
-        <a href="files/YOUR-DOCUMENT.pdf" target="_blank">Open it in a new tab →</a>
-      </p>
-
-      <div class="pdf-embed__actions">
-        <a class="pdf-embed__download" href="files/YOUR-DOCUMENT.pdf" download>
-          Download PDF
-        </a>
-        <a class="pdf-embed__download" href="images/acbg.pdf" target="_blank">
-          Open in new tab
-        </a>
       </div>
 
     </div>
+  </div>
+
+
+
+
+      <!-- ===================== PAGE HEADER =====================
+       Edit the href below to point to your PDF file.
+  ========================================================= -->
+      <div class="resume-header container">
+        <a class="resume-header__download" href="files/acbg.pdf" download>
+          Download PDF
+        </a>
+      </div>
+
+
+      <!-- ===================== PDF VIEWER =====================
+       Uses <object> — the most reliable cross-browser embed.
+       Works natively in Chrome, Firefox, Edge, and desktop
+       Safari using each browser's built-in PDF viewer.
+
+       On mobile (where inline PDF is often blocked), the
+       fallback inside <object> appears automatically — no
+       JavaScript needed.
+
+       TO USE:
+         1. Create a /files/ folder in your project root.
+         2. Put your PDF inside it.
+         3. Replace "files/resume.pdf" in the two places below.
+  ======================================================== -->
+      <div class="resume-viewer container">
+
+        <object class="resume-viewer__frame" data="files/acbg.pdf" type="application/pdf" aria-label="Résumé">
+
+          <!-- This only shows if the PDF can't be embedded -->
+          <div class="resume-viewer__fallback">
+            <p>Your browser doesn't support embedded PDFs.</p>
+            <a class="btn" href="files/acbg.pdf" target="_blank">Open PDF in new tab →</a>
+          </div>
+
+        </object>
+      </div>
   </section>
 
 
 
-  <!-- ===================== NEXT PROJECT =====================
-       Update href and the project title text.
-       Delete this block if this is your last project.
-  ========================================================== -->
   <div class="next-project container">
-    <a href="graphic-design.html">
-      <p class="next-project__label">Next Project(s)</p>
-      <p class="next-project__title">Graphic Design Work</p>
+    <a href="projects.html">
+      <p class="next-project__label">Back</p>
+      <p class="next-project__title">View all projects</p>
     </a>
-    <span class="next-project__arrow">→</span>
+     <a href="projects.html" class="next-project__arrow">→</a>
   </div>
 
 
-<!-- ===================== CONNECT ===================== -->
+  <!-- ===================== CONNECT ===================== -->
   <section class="connect">
     <div class="container">
       <h2 class="connect__heading">Let's connect</h2>
@@ -103,6 +121,7 @@
       </div>
     </div>
   </section>
+  
 
 
   <!-- ===================== FOOTER ===================== -->

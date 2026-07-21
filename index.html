@@ -14,13 +14,9 @@
 </head>
 
 <body>
-  <!-- Things to fix:
-   - navbar pages (make sure they all work correctly)
-   - add logo icon to navbar
-   - add logo as browser tab favicon
-   - make navbar taller
-   - add e-mail & LinkedIn logos
 
+  <!-- Things to fix:
+   - add e-mail & LinkedIn logos
    -->
 
 
@@ -28,7 +24,10 @@
   <nav class="nav">
     <div class="nav__inner">
 
-      <a class="nav__logo" href="index.html">Lexi Randt</a>
+      <a class="nav__logo" href="index.html" aria-label="Home">
+        <img src="images/logo.png" alt="Lexi Randt" style="height: 80px; width: auto; display: block;" />
+      </a>
+      <!-- <a class="nav__logo" href="index.html">Lexi Randt</a> -->
 
       <ul class="nav__links" id="navLinks">
         <li><a href="index.html">Home</a></li>
@@ -60,8 +59,8 @@
           <p class="hero__bio">
             I'm a UX Design student and Computer Science major at Siena University with a passion for creating
             thoughtful, user-centered experiences. I enjoy exploring how technology, people, and creativity come
-            together to shape meaningful user experiences.<br><br> 
-            
+            together to shape meaningful user experiences.<br><br>
+
             Whether I'm designing interfaces, creating graphics, or behind the camera, I strive to produce work that is
             intentional, functional, and centered around the people it's made for.
           </p>
@@ -131,13 +130,13 @@
         <div class="about__photo">
           <img src="images/Lexi-taking-photo.jpeg" alt="Photo of Lexi behind the camera" />
         </div>
-        
+
         <div>
           <p class="label">About Me</p>
-          <h2 class="about__heading">Designing with <br> <i>People</i> in mind.</h2>
+          <h2 class="about__heading">Designing with <br> <i>people</i> in mind.</h2>
           <p class="about__body">
             Whether I'm designing a website, creating graphics, or capturing photos, I keep the human experience at
-            the center of my work.<br> I strive to create experiences that are intuitive, clean, and meaningful.
+            the center of my work.<br><br> I strive to create experiences that are intuitive, clean, and meaningful.
           </p>
           <a class="btn" href="projects.html">View my projects</a>
         </div>

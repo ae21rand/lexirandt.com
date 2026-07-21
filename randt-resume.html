@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project One — Your Name</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume — Lexi Randt</title>
 
+  <!-- ===================== FAVICON =====================
+       Replace images/favicon.png with your file.
+       Ideal size: 32×32 or 64×64 px square PNG.
+  ====================================================== -->
+  <link rel="icon" type="image/png" href="images/favicon.png"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
 <body>
 
 
+  <!-- ===================== NAVIGATION =====================
+       Logo: put your logo file at images/logo.png
+       By default CSS inverts it to white so it shows on the
+       dark nav. If your logo is already white/light, open
+       style.css and remove the filter line from .nav__logo img
+  ========================================================= -->
   <!-- ===================== NAVIGATION ===================== -->
   <nav class="nav">
     <div class="nav__inner">
 
-      <a class="nav__logo" href="index.html">Lexi Randt</a>
+      <a class="nav__logo" href="index.html" aria-label="Home">
+        <img src="images/logo.png" alt="Lexi Randt" style="height: 80px; width: auto; display: block;" />
+      </a>
+      <!-- <a class="nav__logo" href="index.html">Lexi Randt</a> -->
 
       <ul class="nav__links" id="navLinks">
         <li><a href="index.html">Home</a></li>
@@ -36,39 +48,48 @@
   </nav>
 
 
-  <!-- ===================== TITLE & META =====================
-  ========================================================== -->
-
-
+  <!-- ===================== PAGE HEADER =====================
+       Edit the href below to point to your PDF file.
+  ========================================================= -->
+  <div class="resume-header container">
+    <h1>Resume</h1>
+    <a class="resume-header__download" href="files/randt-resume.pdf" download>
+      Download PDF
+    </a>
   </div>
 
-  <section class="pdf-embed section" style="margin-top: -50px;">
-    <div class="container">
 
+  <!-- ===================== PDF VIEWER =====================
+       Uses <object> — the most reliable cross-browser embed.
+       Works natively in Chrome, Firefox, Edge, and desktop
+       Safari using each browser's built-in PDF viewer.
 
-      <!-- <p class="pdf-embed__label">Resume</p> -->
-      <h2 style="font-size: 60px;" class="pdf-embed__title">Resume</h2>
+       On mobile (where inline PDF is often blocked), the
+       fallback inside <object> appears automatically — no
+       JavaScript needed.
 
+       TO USE:
+         1. Create a /files/ folder in your project root.
+         2. Put your PDF inside it.
+         3. Replace "files/resume.pdf" in the two places below.
+  ======================================================== -->
+  <div class="resume-viewer container">
 
-      <iframe class="pdf-embed__frame pdf-embed__frame--scroll" src="files/randt-resume.pdf"
-        title="Randt Resume" loading="lazy"></iframe>
+    <object
+      class="resume-viewer__frame"
+      data="files/randt-resume.pdf"
+      type="application/pdf"
+      aria-label="Résumé">
 
-      <p class="pdf-embed__fallback" id="docFallback">
-        Your browser can't display PDFs inline.
-        <a href="files/randt-resume.pdf" target="_blank">Open it in a new tab →</a>
-      </p>
-
-      <div class="pdf-embed__actions">
-        <a class="pdf-embed__download" href="files/randt-resume.pdf" download>
-          Download PDF
-        </a>
-        <a class="pdf-embed__download" href="files/randt-resume.pdf" target="_blank">
-          Open in new tab
-        </a>
+      <!-- This only shows if the PDF can't be embedded -->
+      <div class="resume-viewer__fallback">
+        <p>Your browser doesn't support embedded PDFs.</p>
+        <a class="btn" href="files/randt-resume.pdf" target="_blank">Open PDF in new tab →</a>
       </div>
 
-    </div>
-  </section>
+    </object>
+
+  </div>
 
 
   <!-- ===================== CONNECT ===================== -->
@@ -93,5 +114,4 @@
 
   <script src="main.js"></script>
 </body>
-
 </html>
