@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project One — Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav">
+    <div class="nav__inner">
+
+      <a class="nav__logo" href="index.html">Lexi Randt</a>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">My work</a></li>
+        <li><a href="graphic-design.html">Design</a></li>
+        <li><a href="photography.html">Photography</a></li>
+        <li><a href="randt-resume.html">Resume</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===================== TITLE & META =====================
+       Edit: project name, overview, role, timeline, team.
+  ========================================================== -->
+  <div class="project-title container--text">
+
+    <h1>Justice Center for the Protection of People with Special Needs</h1>
+
+    <div class="project-meta">
+
+      <div class="project-meta__overview">
+        <p class="label">Overview</p>
+        A collection of graphic design assets created for the Justice Center, 
+        including advertisements, campaignes, and PDF toolkits. All work 
+        adheres to New York State and Justice Center brand guidelines.
+      </div>
+
+      <div class="project-meta__details">
+        <strong>Role</strong>
+        Creative Content Producer Student Assistant <br/>
+
+        <strong>Timeline</strong>
+        September 2025 – December 2025
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =======================================================
+       BODY SECTIONS
+       Duplicate any <section> block below to add a chapter.
+       Mix and match image layouts A, B, C inside each section.
+  ========================================================== -->
+
+
+  <!-- SECTION: Background -->
+  <section class="section" style="margin-top: -50px;">
+    <div class="container--text">
+      <div class="prose">
+
+        <!-- IMAGE B: contained — same width as text column -->
+        <div class="img-contained">
+          <img src="images/Justice-Center/NAMI-ad.jpg" alt="Background image"/>
+        </div>
+        <p class="img-caption">NAMI Ed-Con Advertisement</p>
+
+        <br>
+        <hr class="divider"/>
+        <br>
+
+        <div class="img-contained">
+          <img src="images/Justice-Center/MLK-ad.jpg" alt="Background image"/>
+        </div>
+        <p class="img-caption">MLK 2026 Advertisement</p>
+
+        <br>
+        <hr class="divider"/>
+        <br>
+
+        <div class="img-contained">
+          <img src="images/Justice-Center/false-reporting.png" alt="Background image"/>
+        </div>
+        <p class="img-caption">False Reporting Campaign Document</p>
+
+        <br>
+        <hr class="divider"/>
+        <br>
+
+        <div class="img-contained">
+          <img src="images/Justice-Center/SDMC.png" alt="Background image"/>
+        </div>
+        <p class="img-caption">SDMC pamphlet</p>
+
+        <br>
+        <hr class="divider"/>
+        <br>
+
+        <iframe class="pdf-embed__frame pdf-embed__frame--scroll" src="images/Justice-Center/body-checks.pdf"
+        title="Body Checks PDF" loading="lazy"></iframe>
+        
+
+        <br><br>
+        <p class="img-caption">Body Checks Toolkit (PDF Docuemnt)</p>
+        <hr class="divider"/>
+        <br><br>
+
+        <iframe class="pdf-embed__frame pdf-embed__frame--scroll" src="images/Justice-Center/medical-emergencies.pdf"
+        title="Medical Emergencies" loading="lazy"></iframe>
+        <br><br>
+        <p class="img-caption">Medical Emergencies Toolkit (PDF Document)</p>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+
+  <!-- ===================== NEXT PROJECT =====================
+       Update href and the project title text.
+       Delete this block if this is your last project.
+  ========================================================== -->
+  <div class="next-project container">
+    <a href="alex-carnival.html">
+      <p class="next-project__label">Next Project</p>
+      <p class="next-project__title">Alex & Carnival Brand Guidelines</p>
+    </a>
+    <span class="next-project__arrow">→</span>
+  </div>
+
+
+  <!-- ===================== CONNECT ===================== -->
+  <section class="connect">
+    <div class="container">
+      <h2 class="connect__heading">Let's connect</h2>
+      <p class="connect__sub">Open to opportunities, work, or simply to talk!</p>
+      <div class="connect__links">
+        <a class="connect__link" href="mailto:ae21rand@siean.edu">Email</a>
+        <a class="connect__link" href="www.linkedin.com/in/lexi-r-291688350" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer container">
+    <span>© 2026 Lexi Randt</span>
+    <a href="mailto:ae21rand@siena.edu">ae21rand@siena.edu</a>
+  </footer>
+
+
+  <script src="main.js"></script>
+</body>
+</html>

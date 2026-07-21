@@ -1,0 +1,944 @@
+/* ============================================================
+   DESIGN TOKENS
+   Edit these to restyle the whole site at once.
+============================================================ */
+:root {
+  --color-bg:       #f5f4f0;
+  --color-text:     #1a1a1a;
+  --color-muted:    #6b6b6b;
+  --color-accent:   #c45c3a;
+  --color-border:   #ddd9d3;
+  --color-nav-bg:   #1a1a1a;
+  --color-nav-text: #f5f4f0;
+ 
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+ 
+  --width-wide: 1100px;  /* homepage, nav, projects grid */
+  --width-text:  740px;  /* case study body text */
+  --nav-height:   64px;
+  --gap-section:  80px;
+}
+ 
+ 
+/* ============================================================
+   RESET & BASE
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 17px;
+  line-height: 1.7;
+}
+img { display: block; max-width: 100%; }
+a   { color: var(--color-accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ 
+ 
+/* ============================================================
+   LAYOUT UTILITIES
+============================================================ */
+.container      { width: 90%; max-width: var(--width-wide); margin: 0 auto; }
+.container--text { width: 90%; max-width: var(--width-text); margin: 0 auto; }
+.section        { padding: var(--gap-section) 0; }
+.divider        { border: none; border-top: 1px solid var(--color-border); }
+.label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 14px;
+}
+ 
+ 
+/* ============================================================
+   NAVIGATION
+   Copy this HTML block to every page — styles live here.
+ 
+   <nav class="nav">
+     <div class="nav__inner">
+       <a class="nav__logo" href="index.html">Your Name</a>
+       <ul class="nav__links" id="navLinks">
+         <li><a href="index.html">Home</a></li>
+         <li><a href="projects.html">Projects</a></li>
+         <li><a href="photography.html">Photography</a></li>
+       </ul>
+       <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+         <span></span><span></span><span></span>
+       </button>
+     </div>
+   </nav>
+============================================================ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  background: var(--color-nav-bg);
+  display: flex;
+  align-items: center;
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: var(--width-wide);
+  margin: 0 auto;
+}
+.nav__logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--color-nav-text);
+  letter-spacing: 0.04em;
+}
+.nav__logo:hover { opacity: 0.8; text-decoration: none; }
+.nav__links { display: flex; gap: 32px; list-style: none; }
+.nav__links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-nav-text);
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.nav__links a:hover,
+.nav__links a.active { opacity: 1; text-decoration: none; }
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav__toggle span { display: block; width: 22px; height: 2px; background: var(--color-nav-text); }
+ 
+ 
+/* ============================================================
+   BUTTON
+   <a class="btn" href="...">Label</a>
+   Add .btn--light on dark backgrounds.
+============================================================ */
+.btn {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 30px;
+  border: 1.5px solid currentColor;
+  color: var(--color-text);
+  background: transparent;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+.btn:hover { background: var(--color-text); color: var(--color-bg); text-decoration: none; }
+.btn--light { color: var(--color-bg); }
+.btn--light:hover { background: var(--color-bg); color: var(--color-text); }
+ 
+ 
+/* ============================================================
+   CONNECT SECTION
+   Copy this HTML block to every page.
+ 
+   <section class="connect">
+     <div class="container">
+       <h2 class="connect__heading">Let's connect</h2>
+       <p class="connect__sub">Open to opportunities, collabs, or just a chat 👋</p>
+       <div class="connect__links">
+         <a class="connect__link" href="mailto:you@email.com">Email</a>
+         <a class="connect__link" href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a>
+         <a class="connect__link" href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
+       </div>
+     </div>
+   </section>
+============================================================ */
+.connect {
+  background: var(--color-text);
+  color: var(--color-bg);
+  padding: var(--gap-section) 0;
+  text-align: center;
+}
+.connect__heading {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+.connect__sub { font-size: 16px; opacity: 0.6; margin-bottom: 36px; }
+.connect__links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; }
+.connect__link {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-bg);
+  border-bottom: 1px solid rgba(245, 244, 240, 0.35);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+.connect__link:hover { border-color: var(--color-bg); text-decoration: none; }
+ 
+ 
+/* ============================================================
+   FOOTER
+   Copy this HTML block to every page.
+ 
+   <footer class="footer container">
+     <span>© 2024 Your Name</span>
+     <a href="mailto:you@email.com">you@email.com</a>
+   </footer>
+============================================================ */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  border-top: 1px solid var(--color-border);
+  font-size: 13px;
+  color: var(--color-muted);
+}
+.footer a { color: var(--color-muted); }
+.footer a:hover { color: var(--color-text); text-decoration: none; }
+ 
+ 
+/* ============================================================
+   PLACEHOLDER
+   Use while waiting for real images.
+   <div class="img-placeholder">Label</div>
+============================================================ */
+.img-placeholder {
+  background: linear-gradient(135deg, #e8e4dc, #d4cfc6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+  min-height: 260px;
+  width: 100%;
+}
+ 
+ 
+/* ============================================================
+   HOME — HERO
+   Two-column: text left, photo right.
+============================================================ */
+.hero {
+  padding: 90px 0 70px;
+  border-bottom: 1px solid var(--color-border);
+}
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero__name {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 400;
+  line-height: 1.05;
+  margin-bottom: 28px;
+}
+.hero__name em { font-style: italic; color: var(--color-accent); }
+.hero__tagline {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.5vw, 30px);
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+.hero__bio { font-size: 16px; color: var(--color-muted); }
+.hero__photo {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--color-border);
+}
+.hero__photo img { width: 100%; height: 100%; object-fit: cover; }
+ 
+ 
+/* ============================================================
+   HOME — WORK PREVIEW GRID
+   A 3-column grid of project cards linking to projects.html
+   or directly to individual project pages.
+============================================================ */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.work-card { display: block; color: inherit; text-decoration: none; }
+.work-card:hover .work-card__img img { transform: scale(1.04); }
+.work-card__img {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-border);
+  margin-bottom: 14px;
+}
+.work-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.work-card__title { font-family: var(--font-display); font-size: 22px; font-weight: 400; margin-bottom: 4px; }
+.work-card__tag   { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-muted); }
+ 
+ 
+/* ============================================================
+   HOME — ABOUT SNIPPET
+============================================================ */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.about__heading { font-family: var(--font-display); font-size: clamp(28px, 4vw, 48px); font-weight: 400; margin-bottom: 20px; }
+.about__body    { color: var(--color-muted); margin-bottom: 28px; }
+.about__photo   { aspect-ratio: 3 / 4; overflow: hidden; background: var(--color-border); }
+.about__photo img { width: 100%; height: 100%; object-fit: cover; }
+ 
+ 
+/* ============================================================
+   PROJECTS PAGE — page header
+============================================================ */
+.page-header {
+  padding: 64px 0 48px;
+  border-bottom: 1px solid var(--color-border);
+}
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 80px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+.page-header p {
+  font-size: 16px;
+  color: var(--color-muted);
+  margin-top: 16px;
+  max-width: 480px;
+}
+ 
+ 
+/* ============================================================
+   PROJECTS PAGE — project list
+   Each card is a full-width row: image left, text right.
+   Duplicate .project-card blocks to add more projects.
+============================================================ */
+.project-list {
+  display: flex;
+  flex-direction: column;
+}
+ 
+.project-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s;
+}
+.project-card:first-child { border-top: 1px solid var(--color-border); }
+.project-card:hover { background: rgba(0,0,0,0.02); }
+.project-card:hover .project-card__img img { transform: scale(1.03); }
+ 
+.project-card__img {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-border);
+}
+.project-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+ 
+.project-card__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 56px;
+}
+.project-card__date {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 12px;
+}
+.project-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.project-card__desc {
+  font-size: 15px;
+  color: var(--color-muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.project-card__link {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.project-card__link::after { content: '→'; }
+ 
+/* Alternate: image on right for even-numbered cards */
+.project-card:nth-child(even) .project-card__img  { order: 2; }
+.project-card:nth-child(even) .project-card__info { order: 1; }
+ 
+ 
+/* ============================================================
+   PROJECT CASE STUDY — hero image
+============================================================ */
+.project-hero { width: 100%; max-height: 500px; overflow: hidden; background: var(--color-border); }
+.project-hero img { width: 100%; height: 100%; object-fit: cover; }
+ 
+ 
+/* ============================================================
+   PROJECT CASE STUDY — title & meta
+============================================================ */
+.project-title { padding: 60px 0 48px; border-bottom: 1px solid var(--color-border); }
+.project-title h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 32px;
+}
+.project-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.project-meta__overview { font-size: 16px; color: var(--color-muted); line-height: 1.75; }
+.project-meta__details  { font-size: 14px; color: var(--color-muted); line-height: 1.9; }
+.project-meta__details strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-top: 20px;
+  margin-bottom: 2px;
+}
+.project-meta__details strong:first-child { margin-top: 0; }
+ 
+ 
+/* ============================================================
+   PROJECT CASE STUDY — pull quote
+============================================================ */
+.pull-quote {
+  padding: 64px 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.pull-quote blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 4vw, 40px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.3;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.pull-quote blockquote::before { content: '\201C'; color: var(--color-accent); font-size: 1.2em; vertical-align: -0.2em; margin-right: 4px; }
+.pull-quote blockquote::after  { content: '\201D'; color: var(--color-accent); font-size: 1.2em; vertical-align: -0.2em; margin-left: 4px; }
+.pull-quote cite {
+  display: block;
+  margin-top: 20px;
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+ 
+ 
+/* ============================================================
+   PROJECT CASE STUDY — body text (prose)
+   Wrap all written content in <div class="prose">
+============================================================ */
+.prose h2 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 400;
+  line-height: 1.25;
+  margin-top: 56px;
+  margin-bottom: 18px;
+}
+.prose h2:first-child { margin-top: 0; }
+.prose p  { color: var(--color-muted); margin-bottom: 20px; line-height: 1.8; }
+.prose ul { list-style: none; padding: 0; margin-bottom: 20px; }
+.prose ul li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--color-muted);
+  margin-bottom: 10px;
+}
+.prose ul li::before { content: '—'; position: absolute; left: 0; color: var(--color-accent); }
+.prose strong { color: var(--color-text); font-weight: 500; }
+ 
+ 
+/* ============================================================
+   PROJECT CASE STUDY — image layouts
+ 
+   A) .img-full       — spans full page width
+   B) .img-contained  — stays within the text column
+   C) .img-pair       — two images side by side
+   .img-caption       — caption under any image block
+============================================================ */
+.img-full { width: 100%; overflow: hidden; background: var(--color-border); margin: 44px 0; }
+.img-full img { width: 100%; object-fit: cover; }
+ 
+.img-contained { overflow: hidden; background: var(--color-border); margin: 44px 0; }
+.img-contained img { width: 100%; object-fit: cover; }
+ 
+.img-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 44px 0; }
+.img-pair__item { overflow: hidden; background: var(--color-border); }
+.img-pair__item img { width: 100%; height: 100%; object-fit: cover; }
+ 
+.img-caption {
+  font-size: 13px;
+  color: var(--color-muted);
+  text-align: center;
+  margin-top: -28px;
+  margin-bottom: 44px;
+}
+ 
+ 
+/* ============================================================
+   PROJECT CASE STUDY — next project link
+============================================================ */
+.next-project {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 56px 0;
+  border-top: 1px solid var(--color-border);
+}
+.next-project a { text-decoration: none; }
+.next-project__label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 8px;
+}
+.next-project__title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 4vw, 40px);
+  font-weight: 400;
+  color: var(--color-text);
+  transition: color 0.2s;
+}
+.next-project a:hover .next-project__title { color: var(--color-accent); }
+.next-project__arrow { font-size: 32px; color: var(--color-accent); flex-shrink: 0; }
+ 
+ 
+/* ============================================================
+   PHOTOGRAPHY PAGE
+============================================================ */
+ 
+/* Page header */
+.photo-header {
+  padding: 64px 0 48px;
+  border-bottom: 1px solid var(--color-border);
+}
+.photo-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 80px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+.photo-header p {
+  font-size: 16px;
+  color: var(--color-muted);
+  margin-top: 16px;
+  max-width: 480px;
+}
+ 
+/* ── Category section ──────────────────────────────────────
+   Each .photo-section groups a set of rows under a label.
+   Duplicate the whole block to add a new category.
+──────────────────────────────────────────────────────────── */
+.photo-section {
+  padding: 72px 0 0;
+}
+.photo-section:last-of-type {
+  padding-bottom: 80px;
+}
+ 
+/* Category label + optional count */
+.photo-section__header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 32px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+.photo-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 400;
+  line-height: 1;
+}
+.photo-section__count {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+ 
+/* ── Rows ──────────────────────────────────────────────────
+   Each .photo-row is one horizontal unit.
+ 
+   ONE image (full width):
+     <div class="photo-row">
+       <div class="photo-item"> … </div>
+     </div>
+ 
+   TWO images side by side:
+     <div class="photo-row photo-row--two">
+       <div class="photo-item"> … </div>
+       <div class="photo-item"> … </div>
+     </div>
+ 
+   Gap between rows is controlled by --photo-gap.
+──────────────────────────────────────────────────────────── */
+.photo-rows {
+  --photo-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--photo-gap);
+}
+ 
+.photo-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--photo-gap);
+}
+.photo-row--two {
+  grid-template-columns: 1fr 1fr;
+}
+ 
+/* Individual photo cell — height controlled by aspect-ratio
+   inline style on the .photo-item itself, e.g.:
+     style="aspect-ratio: 3/2"   (landscape)
+     style="aspect-ratio: 1/1"   (square)
+     style="aspect-ratio: 2/3"   (portrait)
+   Omit the style entirely to let the image's natural
+   proportions determine the height. */
+.photo-item {
+  background: var(--color-border);
+  position: relative;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+/* Natural aspect ratio — image sets its own height */
+.photo-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.55s ease;
+}
+.photo-item:hover img { transform: scale(1.025); }
+ 
+/* ── Lightbox ───────────────────────────────────────────────
+   Opens when any .photo-item is clicked.
+   Close by clicking the backdrop, the × button, or Escape.
+──────────────────────────────────────────────────────────── */
+.photo-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(10, 10, 10, 0.95);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.photo-lightbox.is-open { display: flex; }
+ 
+.photo-lightbox__img {
+  max-width: 92vw;
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  cursor: default;
+}
+ 
+/* Caption under the image in the lightbox */
+.photo-lightbox__caption {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(245,244,240,0.6);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+ 
+/* Prev / Next arrows */
+.photo-lightbox__prev,
+.photo-lightbox__next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(245,244,240,0.5);
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 16px;
+  transition: color 0.2s;
+  z-index: 201;
+  user-select: none;
+}
+.photo-lightbox__prev { left: 12px; }
+.photo-lightbox__next { right: 12px; }
+.photo-lightbox__prev:hover,
+.photo-lightbox__next:hover { color: #f5f4f0; }
+ 
+/* Close button */
+.photo-lightbox__close {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  background: none;
+  border: none;
+  color: rgba(245,244,240,0.6);
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 201;
+  transition: color 0.2s;
+}
+.photo-lightbox__close:hover { color: #f5f4f0; }
+ 
+/* Optional caption — shown on hover at bottom of image */
+.photo-item__caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 10px 14px;
+  background: rgba(26,26,26,0.55);
+  color: #f5f4f0;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.photo-item:hover .photo-item__caption { opacity: 1; }
+ 
+ 
+ 
+/* ============================================================
+   GRAPHIC DESIGN PAGE — header
+============================================================ */
+.design-header {
+  padding: 64px 0 48px;
+  border-bottom: 1px solid var(--color-border);
+}
+.design-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 80px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+.design-header p {
+  font-size: 16px;
+  color: var(--color-muted);
+  margin-top: 16px;
+  max-width: 480px;
+}
+ 
+ 
+/* ============================================================
+   GRAPHIC DESIGN PAGE — scroll feed
+   A centred single-column feed. Each .design-piece is one
+   item: image on top, caption below. Images display at their
+   natural proportions — no cropping.
+ 
+   Click any image to open the shared lightbox (same one used
+   on the photography page — styles live in the photo-lightbox
+   block above).
+============================================================ */
+.design-feed {
+  max-width: 780px;       /* comfortable reading / viewing width */
+  margin: 0 auto;
+  padding: 64px 5% 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 72px;              /* space between pieces */
+}
+ 
+/* One piece: image + caption */
+.design-piece {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+ 
+/* The image — natural size, click to zoom */
+.design-piece__img {
+  cursor: zoom-in;
+  overflow: hidden;
+  background: var(--color-border);
+  position: relative;
+}
+.design-piece__img img {
+  width: 100%;
+  height: auto;           /* natural proportions, no cropping */
+  display: block;
+  transition: transform 0.45s ease;
+}
+.design-piece__img:hover img { transform: scale(1.02); }
+ 
+/* Subtle zoom hint on hover */
+.design-piece__img::after {
+  content: 'Click to enlarge';
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f5f4f0;
+  background: rgba(26,26,26,0.55);
+  padding: 5px 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.design-piece__img:hover::after { opacity: 1; }
+ 
+/* Caption row: title left, tags right */
+.design-piece__caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 4px;
+  border-top: 1px solid var(--color-border);
+}
+.design-piece__title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text);
+}
+.design-piece__meta {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+/* Optional longer description below the title/meta row */
+.design-piece__desc {
+  font-size: 14px;
+  color: var(--color-muted);
+  line-height: 1.65;
+  margin-top: 6px;
+}
+ 
+/* Section divider label inside the feed */
+.design-feed__section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: -32px;   /* pull it closer to the first item after it */
+}
+.design-feed__section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 400;
+  white-space: nowrap;
+}
+.design-feed__section::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+ 
+/* ============================================================
+   RESPONSIVE — mobile at 768px
+============================================================ */
+@media (max-width: 768px) {
+  :root { --gap-section: 56px; }
+ 
+  /* Nav */
+  .nav__links { display: none; }
+  .nav__links.is-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0; right: 0;
+    background: var(--color-nav-bg);
+    padding: 24px 5%;
+    gap: 20px;
+  }
+  .nav__toggle { display: flex; }
+ 
+  /* Home */
+  .hero__inner  { grid-template-columns: 1fr; }
+  .hero__photo  { order: -1; aspect-ratio: 4 / 3; }
+  .work-grid    { grid-template-columns: 1fr; }
+  .about        { grid-template-columns: 1fr; }
+  .about__photo { order: -1; aspect-ratio: 4 / 3; }
+ 
+  /* Projects list */
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+  .project-card:nth-child(even) .project-card__img  { order: 0; }
+  .project-card:nth-child(even) .project-card__info { order: 0; }
+  .project-card__info { padding: 28px 24px; }
+ 
+  /* Case study */
+  .project-meta { grid-template-columns: 1fr; }
+  .img-pair     { grid-template-columns: 1fr; }
+  .next-project { flex-direction: column; align-items: flex-start; }
+ 
+  /* Photography */
+  .photo-row--two { grid-template-columns: 1fr; }
+  .photo-section__header { flex-direction: column; gap: 4px; }
+ 
+  /* Graphic design */
+  .design-feed { padding: 40px 0 64px; }
+  .design-piece__caption { flex-direction: column; gap: 4px; }
+  .design-piece__meta { white-space: normal; }
+
+
+  /* ----------- BACK TO TOP --------------- */
+.back-to-top {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #006b54;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+  text-decoration: none;
+  color: #202123;
+}
+
+.back-to-top:hover {
+  color: #202123;
+  cursor: pointer;
+}
+}

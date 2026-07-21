@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lexi Randt - Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Things to fix:
+   - navbar pages (make sure they all work correctly)
+   - add logo icon to navbar
+   - add logo as browser tab favicon
+   - make navbar taller
+   - add e-mail & LinkedIn logos
+
+   -->
+
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav">
+    <div class="nav__inner">
+
+      <a class="nav__logo" href="index.html">Lexi Randt</a>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">My work</a></li>
+        <li><a href="graphic-design.html">Design</a></li>
+        <li><a href="photography.html">Photography</a></li>
+        <li><a href="randt-resume.html">Resume</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ===================== HERO =====================
+       Edit: name, tagline, bio, and photo src.
+  ================================================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__inner">
+
+        <div class="hero__text">
+          <h1 class="hero__name">
+            Hi, I'm<br>
+            <em>Lexi</em>
+          </h1>
+          <p class="hero__tagline">The Person Behind the Design</p>
+          <p class="hero__bio">
+            I'm a UX Design student and Computer Science major at Siena University with a passion for creating
+            thoughtful, user-centered experiences. I enjoy exploring how technology, people, and creativity come
+            together to shape meaningful user experiences.<br><br> 
+            
+            Whether I'm designing interfaces, creating graphics, or behind the camera, I strive to produce work that is
+            intentional, functional, and centered around the people it's made for.
+          </p>
+        </div>
+
+        <div class="hero__photo">
+          <img src="images/Lexi-Headshot.png" alt="Lexi Randt Headshot Photo" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FEATURED PROJECTS =====================
+       A 3-column preview grid. Duplicate a .work-card to add more.
+       Each card links to its own project page.
+  ============================================================== -->
+  <section class="section">
+    <div class="container">
+
+      <p class="label">Some of my work</p>
+
+      <div class="work-grid">
+
+        <!-- Project card — duplicate this block for each project -->
+        <a class="work-card" href="saints-select.html">
+          <div class="work-card__img">
+            <img src="images/Hero-Images/SaintsSelect-Hero-Image.jpg" alt="SaintsSelect" />
+          </div>
+          <h2 class="work-card__title">SaintsSelect</h2>
+          <p class="work-card__tag">UX Design · 2025</p>
+        </a>
+
+        <a class="work-card" href="project-two.html">
+          <div class="work-card__img">
+            <img src="images/Hero-Images/SB-Hero-Image.jpg" alt="Serious Brewing Co." />
+          </div>
+          <h2 class="work-card__title">Serious Brewing Co.</h2>
+          <p class="work-card__tag">Web Design · 2026</p>
+        </a>
+
+        <a class="work-card" href="project-three.html">
+          <div class="work-card__img">
+            <img src="images/Hero-Images/JC-Hero-Image.jpg"
+              alt="MLK Jr. ad for the Justice Center for the Protection of People with Special Needs" />
+          </div>
+          <h2 class="work-card__title">Agency Work</h2>
+          <p class="work-card__tag">Graphic Design · 2025</p>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+
+  <!-- ===================== ABOUT SNIPPET =====================
+       Edit: heading, body text, photo, and button link.
+  =========================================================== -->
+  <section class="section">
+    <div class="container">
+      <div class="about">
+
+        <div class="about__photo">
+          <img src="images/Lexi-taking-photo.jpeg" alt="Photo of Lexi behind the camera" />
+        </div>
+        
+        <div>
+          <p class="label">About Me</p>
+          <h2 class="about__heading">Designing with <br> <i>People</i> in mind.</h2>
+          <p class="about__body">
+            Whether I'm designing a website, creating graphics, or capturing photos, I keep the human experience at
+            the center of my work.<br> I strive to create experiences that are intuitive, clean, and meaningful.
+          </p>
+          <a class="btn" href="projects.html">View my projects</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== CONNECT ===================== -->
+  <section class="connect">
+    <div class="container">
+      <h2 class="connect__heading">Let's connect</h2>
+      <p class="connect__sub">Open to opportunities, work, or simply to talk!</p>
+      <div class="connect__links">
+        <a class="connect__link" href="mailto:ae21rand@siean.edu">Email</a>
+        <a class="connect__link" href="www.linkedin.com/in/lexi-r-291688350" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer container">
+    <span>© 2026 Lexi Randt</span>
+    <a href="mailto:ae21rand@siena.edu">ae21rand@siena.edu</a>
+  </footer>
+
+
+  <script src="main.js"></script>
+</body>
+
+</html>

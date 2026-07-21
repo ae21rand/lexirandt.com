@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project One — Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+
+<!-- Lightbox overlay -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close">×</button>
+  <img  class="lightbox__img" id="lightboxImg" src="" alt="Enlarged view"  style="display:none"/>
+  <iframe class="lightbox__pdf" id="lightboxPdf" src="" title="PDF viewer" style="display:none"></iframe>
+</div>
+
+
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav">
+    <div class="nav__inner">
+
+      <a class="nav__logo" href="index.html">Lexi Randt</a>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">My work</a></li>
+        <li><a href="graphic-design.html">Design</a></li>
+        <li><a href="photography.html">Photography</a></li>
+        <li><a href="randt-resume.html">Resume</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ===================== HERO IMAGE =====================-->
+  <div class="project-hero">
+    <!-- <div class="img-placeholder" style="min-height:400px;">Hero image</div> -->
+    <img src="images/SeriousBrewing/SB Hero Image.jpg" alt="Project One hero image">
+  
+  </div>
+
+
+  <!-- ===================== TITLE & META =====================
+       Edit: project name, overview, role, timeline, team.
+  ========================================================== -->
+  <div class="project-title container--text">
+
+    <h1>Serious Brewing Co.</h1>
+
+    <div class="project-meta">
+
+      <div class="project-meta__overview">
+        <p class="label">Overview</p>
+        A website redesign for a client in the beverage industry.
+        <p><br> Check out the new site: 
+            <a href="https://www.seriousbrewingco.com" target="_blank">www.seriousbrewingco.com</a></p>
+
+      </div>
+
+      <div class="project-meta__details">
+        <strong>Role</strong>
+        Web Designer<br/>
+
+        <strong>Timeline</strong>
+        Fall 2025 – Spring 2026
+
+        <strong>Team</strong>
+        2 Students (1 Designer & 1 Backend Developer)
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =======================================================
+       BODY SECTIONS
+  ========================================================== -->
+
+  <hr class="divider" />
+
+  <section class="section">
+
+    <!-- IMAGE A: full width — bleeds to page edges -->
+    <div class="img-full">
+      <img src="images/SeriousBrewing/Serious Brewing Poster.png" alt="Process diagram"/>
+      <!-- No image? <div class="img-placeholder" style="min-height:400px;">Process diagram</div> -->
+    </div>
+    <div class="container--text">
+      <p class="img-caption">Academic Showcase Poster Spring 2026 - Serious Brewing Co. Website Redesign</p>
+    </div>
+
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- ===================== NEXT PROJECT =====================
+       Update href and the project title text.
+       Delete this block if this is your last project.
+  ========================================================== -->
+  <div class="next-project container">
+    <a href="saints-select.html">
+      <p class="next-project__label">Next Project</p>
+      <p class="next-project__title">SaintsSelect</p>
+    </a>
+    <span class="next-project__arrow">→</span>
+  </div>
+
+
+  <!-- ===================== CONNECT ===================== -->
+  <section class="connect">
+    <div class="container">
+      <h2 class="connect__heading">Let's connect</h2>
+      <p class="connect__sub">Open to opportunities, work, or simply to talk!</p>
+      <div class="connect__links">
+        <a class="connect__link" href="mailto:ae21rand@siean.edu">Email</a>
+        <a class="connect__link" href="www.linkedin.com/in/lexi-r-291688350" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer container">
+    <span>© 2026 Lexi Randt</span>
+    <a href="mailto:ae21rand@siena.edu">ae21rand@siena.edu</a>
+  </footer>
+
+
+  <script src="main.js"></script>
+</body>
+</html>

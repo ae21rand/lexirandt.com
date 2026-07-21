@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project One — Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav">
+    <div class="nav__inner">
+
+      <a class="nav__logo" href="index.html">Lexi Randt</a>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">My work</a></li>
+        <li><a href="graphic-design.html">Design</a></li>
+        <li><a href="photography.html">Photography</a></li>
+        <li><a href="randt-resume.html">Resume</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ===================== HERO IMAGE =====================
+       A full-width banner at the top of the case study.
+       Option A: add your image — replace the src below.
+       Option B: delete this block if you don't want a hero.
+  ========================================================= -->
+  <div class="project-hero">
+    <img src="images/project-one-hero.jpg" alt="Project One hero image"/>
+    <!-- No image yet? Replace the img tag with:
+    <div class="img-placeholder" style="min-height:400px;">Hero image</div> -->
+  </div>
+
+
+  <!-- ===================== TITLE & META =====================
+       Edit: project name, overview, role, timeline, team.
+  ========================================================== -->
+  <div class="project-title container--text">
+
+    <h1>Project One</h1>
+
+    <div class="project-meta">
+
+      <div class="project-meta__overview">
+        <p class="label">Overview</p>
+        A short summary of the project — what it was, what problem it
+        solved, and what your role involved. Two or three sentences.
+      </div>
+
+      <div class="project-meta__details">
+        <strong>Role</strong>
+        Product Designer<br/>
+        UX Research, Interaction Design, Visual Design
+
+        <strong>Timeline</strong>
+        Jan 2024 – Mar 2024
+
+        <strong>Team</strong>
+        Solo / 2 Designers, 1 PM
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ===================== PULL QUOTE =====================
+       A large italic statement — a key insight, user quote,
+       or the project's core outcome.
+       Delete the <cite> line if you don't need attribution.
+  ========================================================= -->
+  <div class="pull-quote">
+    <div class="container--text">
+      <blockquote>
+        Users shouldn't have to think — they should just know.
+        <cite>— Key insight from user research</cite>
+      </blockquote>
+    </div>
+  </div>
+
+
+  <!-- =======================================================
+       BODY SECTIONS
+       Duplicate any <section> block below to add a chapter.
+       Mix and match image layouts A, B, C inside each section.
+  ========================================================== -->
+
+
+  <!-- SECTION: Background -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>Background</h2>
+        <p>
+          Context about the client or product, the situation you were
+          brought into, and any goals or constraints that shaped the work.
+        </p>
+        <p>
+          Add a second paragraph here if needed.
+        </p>
+
+        <!-- IMAGE B: contained — same width as text column -->
+        <div class="img-contained">
+          <img src="images/background.jpg" alt="Background image"/>
+          <!-- No image? <div class="img-placeholder">Image</div> -->
+        </div>
+        <p class="img-caption">Optional caption for the image above.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+
+  <!-- SECTION: Process -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>The Process</h2>
+        <p>
+          Describe your design process at a high level and the methods
+          that guided your work.
+        </p>
+
+        <ul>
+          <li><strong>Discovery</strong> — understanding the problem and user needs</li>
+          <li><strong>Definition</strong> — synthesising research into clear problem statements</li>
+          <li><strong>Ideation</strong> — sketches and wireframes exploring potential solutions</li>
+          <li><strong>Delivery</strong> — high-fidelity designs and engineering handoff</li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- IMAGE A: full width — bleeds to page edges -->
+    <div class="img-full">
+      <img src="images/process.jpg" alt="Process diagram"/>
+      <!-- No image? <div class="img-placeholder" style="min-height:400px;">Process diagram</div> -->
+    </div>
+    <div class="container--text">
+      <p class="img-caption">Caption for the full-width image above.</p>
+    </div>
+
+  </section>
+
+  <hr class="divider"/>
+
+
+  <!-- SECTION: Research -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>Research &amp; Insights</h2>
+        <p>
+          What research did you conduct? Who did you speak to? What were
+          you trying to learn?
+        </p>
+        <p>
+          Lead with numbers or concrete observations where you have them —
+          they're more convincing than vague statements.
+        </p>
+
+        <!-- IMAGE C: side-by-side pair -->
+        <div class="img-pair">
+          <div class="img-pair__item">
+            <img src="images/research-1.jpg" alt="Research image one"/>
+            <!-- No image? <div class="img-placeholder">Image</div> -->
+          </div>
+          <div class="img-pair__item">
+            <img src="images/research-2.jpg" alt="Research image two"/>
+          </div>
+        </div>
+        <p class="img-caption">Caption for the image pair above.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+
+  <!-- SECTION: The Solution -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>The Solution</h2>
+        <p>
+          Describe what you designed and why. Connect the solution back
+          to the problems uncovered in research.
+        </p>
+
+        <div class="img-contained">
+          <img src="images/solution-1.jpg" alt="Solution screen one"/>
+        </div>
+
+        <p>
+          Continue the narrative — explain what the reader is looking at,
+          or describe how this screen addresses the problem.
+        </p>
+
+        <div class="img-contained">
+          <img src="images/solution-2.jpg" alt="Solution screen two"/>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+
+  <!-- SECTION: Results & Takeaways -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>Results &amp; Takeaways</h2>
+        <p>
+          What was the outcome? Include metrics, qualitative feedback, or
+          business impact if you have them.
+        </p>
+
+        <ul>
+          <li><strong>Takeaway one.</strong> A lesson learned from this project.</li>
+          <li><strong>Takeaway two.</strong> Something you'd do differently or carry forward.</li>
+          <li><strong>Takeaway three.</strong> A skill or approach this project helped develop.</li>
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+  <!-- Preview section — paste wherever you want it on the page -->
+<section class="preview-section section">
+  <div class="container">
+ 
+    <p class="label">Documents &amp; Images</p>
+    <h2 class="pdf-embed__title">My Work</h2>
+ 
+    <div class="preview-grid">
+ 
+      <!-- SINGLE IMAGE — 1 column -->
+      <div class="preview-item" data-src="images/photo-01.jpg" data-type="image">
+        <img src="images/photo-01.jpg" alt="Photo description"/>
+        <div class="preview-item__overlay"><span>View</span></div>
+      </div>
+ 
+      <!-- SINGLE IMAGE — 1 column -->
+      <div class="preview-item" data-src="images/photo-02.jpg" data-type="image">
+        <img src="images/photo-02.jpg" alt="Photo description"/>
+        <div class="preview-item__overlay"><span>View</span></div>
+      </div>
+ 
+      <!-- PDF PREVIEW — 1 column
+           The iframe gives a visual thumbnail of the PDF.
+           Clicking opens it fullscreen in the lightbox. -->
+      <div class="preview-item" data-src="files/YOUR-RESUME.pdf" data-type="pdf">
+        <iframe src="files/YOUR-RESUME.pdf" title="Resume preview" tabindex="-1"></iframe>
+        <div class="preview-item__overlay"><span>View PDF</span></div>
+      </div>
+ 
+      <!-- WIDE IMAGE — spans 2 columns -->
+      <div class="preview-item preview-item--wide" data-src="images/photo-03.jpg" data-type="image">
+        <img src="images/photo-03.jpg" alt="Wide photo"/>
+        <div class="preview-item__overlay"><span>View</span></div>
+      </div>
+ 
+      <!-- FULL-WIDTH IMAGE — spans all 3 columns -->
+      <div class="preview-item preview-item--full" data-src="images/photo-04.jpg" data-type="image">
+        <img src="images/photo-04.jpg" alt="Full-width photo"/>
+        <div class="preview-item__overlay"><span>View</span></div>
+      </div>
+ 
+      <!-- Add more items here by copying any block above -->
+ 
+    </div>
+  </div>
+</section>
+
+
+  <!-- ===================== NEXT PROJECT =====================
+       Update href and the project title text.
+       Delete this block if this is your last project.
+  ========================================================== -->
+  <div class="next-project container">
+    <a href="project-two.html">
+      <p class="next-project__label">Next Project</p>
+      <p class="next-project__title">Project Two</p>
+    </a>
+    <span class="next-project__arrow">→</span>
+  </div>
+
+
+  <!-- ===================== CONNECT ===================== -->
+  <section class="connect">
+    <div class="container">
+      <h2 class="connect__heading">Let's connect</h2>
+      <p class="connect__sub">Open to opportunities, work, or simply to talk!</p>
+      <div class="connect__links">
+        <a class="connect__link" href="mailto:ae21rand@siean.edu">Email</a>
+        <a class="connect__link" href="www.linkedin.com/in/lexi-r-291688350" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer container">
+    <span>© 2026 Lexi Randt</span>
+    <a href="mailto:ae21rand@siena.edu">ae21rand@siena.edu</a>
+  </footer>
+
+
+  <script src="main.js"></script>
+</body>
+</html>

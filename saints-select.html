@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project One — Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav">
+    <div class="nav__inner">
+
+      <a class="nav__logo" href="index.html">Lexi Randt</a>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">My work</a></li>
+        <li><a href="graphic-design.html">Design</a></li>
+        <li><a href="photography.html">Photography</a></li>
+        <li><a href="randt-resume.html">Resume</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ===================== HERO IMAGE =====================
+       A full-width banner at the top of the case study.
+       Option A: add your image — replace the src below.
+       Option B: delete this block if you don't want a hero.
+  ========================================================= -->
+  <div class="project-hero">
+    <img src="images/SaintsSelect/ss-login-mockup.jpg" alt="Mockup of an iPhone showing the SaintsSelect login screen." />
+    <!-- No image yet? Replace the img tag with:
+    <div class="img-placeholder" style="min-height:400px;">Hero image</div> -->
+  </div>
+
+
+  <!-- ===================== TITLE & META =====================
+       Edit: project name, overview, role, timeline, team.
+  ========================================================== -->
+  <div class="project-title container--text">
+
+    <h1>SaintsSelect</h1>
+
+    <div class="project-meta">
+
+      <div class="project-meta__overview">
+        <p class="label">Overview</p>
+        SaintsSelect is a roommate-matching app concept designed to make the process of finding a roommate less
+        stressful and more personalized for Siena students.
+      </div>
+
+      <div class="project-meta__details">
+        <strong>Role</strong>
+        Designer<br />
+
+        <strong>Timeline</strong>
+        May 2025 – August 2025
+
+        <strong>Team</strong>
+        2 Students
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ===================== PULL QUOTE =====================
+       A large italic statement — a key insight, user quote,
+       or the project's core outcome.
+       Delete the <cite> line if you don't need attribution.
+  ========================================================= -->
+  <div class="pull-quote">
+    <div class="container--text">
+      <blockquote>
+        “[SaintsSelect] has the potential to change Siena’s student networking.”
+        <cite>— Key insight from student questionnaries</cite>
+      </blockquote>
+    </div>
+  </div>
+
+
+  <!-- =======================================================
+       BODY SECTIONS
+       Duplicate any <section> block below to add a chapter.
+       Mix and match image layouts A, B, C inside each section.
+  ========================================================== -->
+
+
+  <!-- SECTION: Background -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>Background</h2>
+        <p>
+          Siena’s current roommate matching process often feels unreliable and difficult to navigate. Students only
+          provide limited information about themselves, which can lead to random or poorly matched roommate assignments.
+          Many students said the process made it hard to express important lifestyle preferences or get a sense of who
+          they would be living with.
+          Because of this, roommate conflicts can happen over things like sleep schedules, cleanliness, social habits,
+          or study routines. These issues can make the transition into college more stressful than it needs to be.
+          <br><br>
+          My partner and I saw an opportunity to redesign the experience from scratch; to create a system that
+          prioritizes
+          compatibility, transparency, and ease of use for Siena students.
+        </p>
+
+        <!-- IMAGE B: contained — same width as text column -->
+        <div class="img-contained">
+          <img src="images/SaintsSelect/old-roommate-form.jpg" alt="Background image" />
+          <!-- No image? <div class="img-placeholder">Image</div> -->
+        </div>
+        <p class="img-caption">Siena’s original roommate matching form lacked structure, personalization, and meaningful
+          compatibility indicators.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+
+  <!-- SECTION: Process -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>The Process</h2>
+        <p>
+          Our design process focused on understanding student frustrations and turning those insights into a better
+          roommate matching experience.
+        </p>
+
+        <ul>
+          <li><strong>Discovery</strong> <br> We started by researching Siena’s current roommate matching system and
+            gathering feedback from students through questionnaires and conversations. We wanted to learn what students
+            disliked about the current process and what they wished it included instead.</li>
+          <li><strong>Definition</strong> <br> After reviewing our research, we identified a few major issues: unclear
+            matching criteria, limited student input, outdated profile information, and a process that felt difficult to
+            navigate. These insights helped us define the main problems we wanted to solve.</li>
+          <li><strong>Ideation</strong> <br> We explored different ideas through sketches, wireframes, and user flows.
+            During this stage, we focused on making the experience feel simple, approachable, and easy to use while
+            still helping students make meaningful roommate connections.</li>
+          <li><strong>Delivery</strong> <br> The final outcome was a high-fidelity Figma mockup design that showed the full
+            roommate matching experience, including onboarding, compatibility-based profiles, and student messaging
+            features.</li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- IMAGE A: full width — bleeds to page edges -->
+    <div class="img-full">
+      <img src="images/SaintsSelect/ss-user-flow.png" alt="SaintsSelect user flow diagram" />
+      <!-- No image? <div class="img-placeholder" style="min-height:400px;">Process diagram</div> -->
+    </div>
+    <div class="container--text">
+      <p class="img-caption">The SaintsSelect user flow (mobile version).</p>
+    </div>
+
+  </section>
+
+  <hr class="divider" />
+
+
+  <!-- SECTION: Research -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>Research &amp; Insights</h2>
+        <p>
+          Our research focused on understanding why students felt dissatisfied with Siena’s current roommate matching
+          system and what they believed would improve the experience.
+          We collected feedback through student questionnaires and conversations with Siena students. A majority of
+          students described the current process as stressful, unclear, and too random.
+        </p>
+        <p>
+          Some of the biggest concerns students mentioned included:<br>
+          - Not enough personality or lifestyle questions<br>
+          - Random roommate assignments<br>
+          - Difficulty knowing if someone would be compatible<br>
+          - Limited communication between potential roommates<br>
+          - Outdated or incomplete profile information<br>
+        </p>
+
+        <!-- IMAGE C: side-by-side pair -->
+        <!-- <div class="img-pair">
+          <div class="img-pair__item">
+            <img src="images/research-1.jpg" alt="Research image one" />
+             No image? <div class="img-placeholder">Image</div> 
+          </div>
+          <div class="img-pair__item">
+            <img src="images/research-2.jpg" alt="Research image two" />
+          </div>
+        </div>
+        <p class="img-caption">Caption for the image pair above.</p> -->
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+
+  <!-- SECTION: The Solution -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>The Solution</h2>
+        <p>
+          SaintsSelect creates a more personalized and student-friendly roommate matching experience designed
+          specifically for Siena students.
+        </p>
+
+        <div class="img-contained">
+          <img src="images/SaintsSelect/Matching-Questionnaire.jpg" alt="SaintsSelect matching questionnaire." />
+        </div>
+
+        <p>
+          <b>Smarter Matching Questionnaire</b><br>
+          The app begins with a simple five-step questionnaire that guides students through important lifestyle and
+          living preferences. Instead of one long form, the questions are broken into smaller sections that feel easier
+          to complete.<br><br>
+          The questionnaire focuses on topics like:<br>
+          - Sleep habits<br>
+          - Cleanliness<br>
+          - Room temperature<br>
+          - Study preferences<br>
+          - Social habits<br><br>
+          This approach helps students share more meaningful information while making the onboarding experience feel
+          less overwhelming.
+        </p>
+
+         <div class="img-contained">
+          <img src="images/SaintsSelect/Compatability-Based Profiles.jpg" alt="SaintsSelect compatibility-based profiles & messaging system screens." />
+        </div> 
+
+        <p><br>
+          <b>Compatibility-Based Profiles</b><br>
+          Students can browse roommate profiles that highlight compatibility based on shared habits and preferences.
+          Profiles are designed to make it easier to quickly understand if someone could be a good roommate match.
+          The platform also includes built-in messaging connected to Siena email accounts so students can safely
+          communicate with potential roommates directly within the app.<br><br>
+          By combining matching, profiles, and messaging into one platform, SaintsSelect creates a more connected and
+          less stressful roommate search experience.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+
+  <!-- SECTION: Results & Takeaways -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>Results &amp; Takeaways</h2>
+        <p>
+          SaintsSelect received positive feedback from students, especially for its modern design, ease of use, and
+          focus on compatibility.
+          Many students described the platform as feeling more engaging and easier to navigate than Siena’s current
+          roommate matching process.<br>
+          One student commented:<br><br>
+          <i>“It comes across as streamlined and more ‘fun’ to use than the existing roommate matching
+            system.”</i><br><br>
+          The project was later presented to Siena’s Software Engineering program for continued development
+          into a fully functional, full stack application.
+        </p>
+
+        <ul>
+          <li><strong>Takeaway one:</strong> <b><i>Student feedback should guide the design process.</i></b><br>
+            Hearing directly from students helped shape features that addressed real frustrations and needs.</li>
+          <li><strong>Takeaway two:</strong> <b><i>Good roommate matches can improve the college experience.</i></b><br>
+            Finding compatible roommates can help reduce conflict, create stronger social connections, and make the
+            transition into college smoother.</li>
+          <li><strong>Takeaway three:</strong> <b><i>Simple design choices can make stressful experiences feel easier.</i></b><br>
+            Breaking the process into smaller steps and creating a cleaner interface made the experience feel more
+            approachable and user-friendly.</li>
+        </ul>
+
+        <p><br> Check out the full Figma prototype 
+            <a href="https://www.figma.com/design/HCbALMYDFVuL46URSmqUXB/SaintsSelect-Mobile-Prototype?node-id=0-1&p=f&t=AKYjDB58TkmBoyMx-0" target="_blank">here</a>!</p>
+
+      </div>
+    </div>
+
+
+  </section>
+
+
+  <!-- ===================== NEXT PROJECT =====================
+       Update href and the project title text.
+       Delete this block if this is your last project.
+  ========================================================== -->
+  <div class="next-project container">
+    <a href="justice-center.html">
+      <p class="next-project__label">Next Project</p>
+      <p class="next-project__title">NYS Justice Center</p>
+    </a>
+    <span class="next-project__arrow">→</span>
+  </div>
+
+
+  <!-- ===================== CONNECT ===================== -->
+  <section class="connect">
+    <div class="container">
+      <h2 class="connect__heading">Let's connect</h2>
+      <p class="connect__sub">Open to opportunities, work, or simply to talk!</p>
+      <div class="connect__links">
+        <a class="connect__link" href="mailto:ae21rand@siean.edu">Email</a>
+        <a class="connect__link" href="www.linkedin.com/in/lexi-r-291688350" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer container">
+    <span>© 2026 Lexi Randt</span>
+    <a href="mailto:ae21rand@siena.edu">ae21rand@siena.edu</a>
+  </footer>
+
+
+  <script src="main.js"></script>
+</body>
+
+</html>

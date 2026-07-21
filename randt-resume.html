@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project One — Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav">
+    <div class="nav__inner">
+
+      <a class="nav__logo" href="index.html">Lexi Randt</a>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">My work</a></li>
+        <li><a href="graphic-design.html">Design</a></li>
+        <li><a href="photography.html">Photography</a></li>
+        <li><a href="randt-resume.html">Resume</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ===================== TITLE & META =====================
+  ========================================================== -->
+
+
+  </div>
+
+  <section class="pdf-embed section" style="margin-top: -50px;">
+    <div class="container">
+
+
+      <!-- <p class="pdf-embed__label">Resume</p> -->
+      <h2 style="font-size: 60px;" class="pdf-embed__title">Resume</h2>
+
+
+      <iframe class="pdf-embed__frame pdf-embed__frame--scroll" src="files/randt-resume.pdf"
+        title="Randt Resume" loading="lazy"></iframe>
+
+      <p class="pdf-embed__fallback" id="docFallback">
+        Your browser can't display PDFs inline.
+        <a href="files/randt-resume.pdf" target="_blank">Open it in a new tab →</a>
+      </p>
+
+      <div class="pdf-embed__actions">
+        <a class="pdf-embed__download" href="files/randt-resume.pdf" download>
+          Download PDF
+        </a>
+        <a class="pdf-embed__download" href="files/randt-resume.pdf" target="_blank">
+          Open in new tab
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== CONNECT ===================== -->
+  <section class="connect">
+    <div class="container">
+      <h2 class="connect__heading">Let's connect</h2>
+      <p class="connect__sub">Open to opportunities, work, or simply to talk!</p>
+      <div class="connect__links">
+        <a class="connect__link" href="mailto:ae21rand@siean.edu">Email</a>
+        <a class="connect__link" href="www.linkedin.com/in/lexi-r-291688350" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer container">
+    <span>© 2026 Lexi Randt</span>
+    <a href="mailto:ae21rand@siena.edu">ae21rand@siena.edu</a>
+  </footer>
+
+
+  <script src="main.js"></script>
+</body>
+
+</html>

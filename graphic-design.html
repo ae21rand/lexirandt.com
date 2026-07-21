@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Graphic Design — Lexi Randt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav">
+    <div class="nav__inner">
+
+      <a class="nav__logo" href="index.html">Lexi Randt</a>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">My work</a></li>
+        <li><a href="graphic-design.html">Design</a></li>
+        <li><a href="photography.html">Photography</a></li>
+        <li><a href="randt-resume.html">Resume</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ===================== PAGE HEADER =====================
+       Edit: heading and subtitle.
+  ========================================================= -->
+  <div class="design-header container">
+    <h1>Graphic Design</h1>
+    <p>A selection of visual design work from college courses, paid work, and personal projects.</p>
+  </div>
+
+
+  <!-- =======================================================
+       HOW TO USE
+
+       ADD A PIECE — duplicate any .design-piece block.
+       Update the img src/alt, title, meta, and description.
+
+       CAPTION FIELDS:
+         .design-piece__title  → project name (required)
+         .design-piece__meta   → category / year (optional)
+         .design-piece__desc   → longer description (optional,
+                                  remove the <p> if not needed)
+
+       ADD A SECTION LABEL — paste this before any piece:
+         <div class="design-feed__section">
+           <h2>Branding</h2>
+         </div>
+
+       LIGHTBOX:
+         Images open fullscreen when clicked.
+         Navigate with ← → arrow keys or on-screen arrows.
+         Close with Escape or click the dark backdrop.
+         Add data-caption="..." to the <img> to show a caption
+         in the lightbox (can differ from the page caption).
+
+       NO IMAGE YET?
+         Replace <img> with:
+         <div class="img-placeholder">Image coming soon</div>
+  ======================================================= -->
+
+  <div class="design-feed">
+
+
+    <!-- ── Section label ──────────────────────────────── -->
+   <!--  <div class="design-feed__section">
+      <h2>Graphic Designs</h2>
+    </div> -->
+
+
+    <!-- PIECE — duplicate this block for each new piece -->
+    <div class="design-piece">
+      <div class="design-piece__img">
+        <img
+          src="images/Graphic Design/It goes both ways.jpg"
+          alt="It Goes Both Ways - Poster"
+          data-caption="It Goes Both Ways - Poster, 2024"
+        />
+        <!-- No image yet? Replace the img tag with:
+        <div class="img-placeholder">Image coming soon</div> -->
+      </div>
+      <div class="design-piece__caption">
+        <div>
+          <p class="design-piece__title">It Goes Both Ways</p>
+        </div>
+        <p class="design-piece__meta">Poster Design · 2024</p>
+      </div>
+    </div>
+
+    <!-- PIECE -->
+    <div class="design-piece">
+      <div class="design-piece__img">
+        <img
+          src="images/Graphic Design/Tiki - Painkiller.jpg"
+          alt="(not exactly a) Painkiller Cocktail Tasting Sheet"
+          data-caption="(not exactly a) Painkiller Cocktail Tasting Sheet"
+        />
+      </div>
+      <div class="design-piece__caption">
+        <div>
+          <p class="design-piece__title">(not exactly a) Painkiller</p>
+        </div>
+        <p class="design-piece__meta">Cocktail Tasting Sheet · 2026</p>
+      </div>
+    </div>
+
+    <!-- PIECE — no description, just title and meta -->
+    <div class="design-piece">
+      <div class="design-piece__img">
+        <img
+          src="images/Graphic Design/jar.jpg"
+          alt="Nogira's Pumpkin Pepper Sauce"
+        />
+      </div>
+      <div class="design-piece__caption">
+        <div>
+          <p class="design-piece__title">Nogira's Pumpkin Pepper Sauce</p>
+        </div>
+        <p class="design-piece__meta">Logo & Product Design · 2024</p>
+      </div>
+    </div>
+
+    <!-- PIECE — no description, just title and meta -->
+    <div class="design-piece">
+      <div class="design-piece__img">
+        <img
+          src="images/Graphic Design/initials.jpeg"
+          alt="Secondary mark and colour system"
+        />
+      </div>
+      <div class="design-piece__caption">
+        <div>
+          <p class="design-piece__title">Initial Logo Exploration</p>
+          <!-- No description — just remove the <p> -->
+        </div>
+        <p class="design-piece__meta">Logo Design · 2025</p>
+      </div>
+    </div>
+
+    <!-- PIECE — no description, just title and meta -->
+    <div class="design-piece">
+      <div class="design-piece__img">
+        <img
+          src="images/Graphic Design/Siena U Logo LR.png"
+          alt="Siena University Logo Contest Submission"
+        />
+      </div>
+      <div class="design-piece__caption">
+        <div>
+          <p class="design-piece__title">Siena University Logo Contest Submission</p>
+          <!-- No description — just remove the <p> -->
+        </div>
+        <p class="design-piece__meta">Logo Design · 2025</p>
+      </div>
+    </div>
+
+    <!-- PIECE — no description, just title and meta -->
+    <div class="design-piece">
+      <div class="design-piece__img">
+        <img
+          src="images/Graphic Design/Food-Waste_Display.jpeg"
+          alt="Food Waste Display - Siena Dining x Laudato Si'"
+        />
+      </div>
+      <div class="design-piece__caption">
+        <div>
+          <p class="design-piece__title">Food Waste Display - Siena Dining x Laudato Si'</p>
+        </div>
+        <p class="design-piece__meta">Graphic Design · 2025</p>
+      </div>
+    </div>
+
+     <!-- PIECE — no description, just title and meta -->
+    <div class="design-piece">
+      <div class="design-piece__img">
+        <img
+          src="images/Graphic Design/eyeq.jpg"
+          alt="Secondary mark and colour system"
+        />
+      </div>
+      <div class="design-piece__caption">
+        <div>
+          <p class="design-piece__title">EyeQ – Cybersecurity Firm Concept Logo</p>
+        </div>
+        <p class="design-piece__meta">Logo Design · 2023</p>
+      </div>
+    </div>
+
+    <!-- PIECE — no description, just title and meta -->
+    <div class="design-piece">
+      <div class="design-piece__img">
+        <img
+          src="images/Graphic Design/guysdolls.png"
+          alt="Guys & Dolls (Siena Creative Arts Department)"
+        />
+      </div>
+      <div class="design-piece__caption">
+        <div>
+          <p class="design-piece__title">Guys & Dolls (Siena Creative Arts Department)</p>
+          <!-- No description — just remove the <p> -->
+        </div>
+        <p class="design-piece__meta">Poster Design · 2024</p>
+      </div>
+    </div>
+
+    <!-- PIECE — no description, just title and meta -->
+    <div class="design-piece">
+      <div class="design-piece__img">
+        <img
+          src="images/Graphic Design/carmen-fd.png"
+          alt="Secondary mark and colour system"
+        />
+      </div>
+      <div class="design-piece__caption">
+        <div>
+          <p class="design-piece__title">Carmen Fire Department Duck</p>
+            <p class="design-piece__desc">Commissioned for a fire truck due August 2026.</p>
+        </div>
+        <p class="design-piece__meta">Graphic Design · 2022</p>
+      </div>
+    </div>
+
+
+     <!-- PIECE — no description, just title and meta -->
+    <div class="design-piece">
+      <div class="design-piece__img">
+        <img
+          src="images/Graphic Design/margot-robbie.PNG"
+          alt="Margot Robbie"
+        />
+      </div>
+      <div class="design-piece__caption">
+        <div>
+          <p class="design-piece__title">Margot Robbie</p>
+        </div>
+        <p class="design-piece__meta">Graphic Design · 2022</p>
+      </div>
+    </div>
+
+     <!-- PIECE — no description, just title and meta -->
+    <div class="design-piece">
+      <div class="design-piece__img">
+        <img
+          src="images/Graphic Design/Sebastian.jpg"
+          alt="Sebastian - Pet Portrait"
+        />
+      </div>
+      <div class="design-piece__caption">
+        <div>
+          <p class="design-piece__title">Sebastian</p>
+        </div>
+        <p class="design-piece__meta">Pet Portrait · 2025</p>
+      </div>
+    </div>
+
+    <!-- Add more pieces here -->
+
+    <a href="#" class="back-to-top">↑ Back to Top</a>
+    <br>
+
+    <!-- ===================== NEXT PROJECT =====================
+       Update href and the project title text.
+       Delete this block if this is your last project.
+  ========================================================== -->
+  <div class="next-project container">
+    <a href="projects.html">
+      <p class="next-project__label">My Work</p>
+      <p class="next-project__title">Back to all my projects</p>
+    </a>
+    <span class="next-project__arrow">→</span>
+  </div>
+
+
+  </div><!-- /design-feed -->
+
+
+  <!-- ===================== LIGHTBOX =====================
+       Paste this once per page. The script below drives it.
+       Shared with photography.html — same markup, same styles.
+  ======================================================= -->
+  <div class="photo-lightbox" id="photoLightbox" role="dialog" aria-modal="true">
+    <button class="photo-lightbox__close" id="lbClose" aria-label="Close">×</button>
+    <button class="photo-lightbox__prev"  id="lbPrev"  aria-label="Previous">‹</button>
+    <button class="photo-lightbox__next"  id="lbNext"  aria-label="Next">›</button>
+    <img class="photo-lightbox__img" id="lbImg" src="" alt=""/>
+    <p class="photo-lightbox__caption" id="lbCaption"></p>
+  </div>
+
+
+  <!-- ===================== CONNECT ===================== -->
+  <section class="connect">
+    <div class="container">
+      <h2 class="connect__heading">Let's connect</h2>
+      <p class="connect__sub">Open to opportunities, work, or simply to talk!</p>
+      <div class="connect__links">
+        <a class="connect__link" href="mailto:ae21rand@siean.edu">Email</a>
+        <a class="connect__link" href="www.linkedin.com/in/lexi-r-291688350" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer container">
+    <span>© 2026 Lexi Randt</span>
+    <a href="mailto:ae21rand@siena.edu">ae21rand@siena.edu</a>
+  </footer>
+
+
+  <script src="main.js"></script>
+
+  <script>
+    /* =====================================================
+       LIGHTBOX — same logic as photography.html.
+       Collects all .design-piece__img img elements.
+    ===================================================== */
+    const lightbox  = document.getElementById('photoLightbox');
+    const lbImg     = document.getElementById('lbImg');
+    const lbCaption = document.getElementById('lbCaption');
+    const lbClose   = document.getElementById('lbClose');
+    const lbPrev    = document.getElementById('lbPrev');
+    const lbNext    = document.getElementById('lbNext');
+
+    const photos = Array.from(document.querySelectorAll('.design-piece__img img'));
+    let current  = 0;
+
+    function openLightbox(index) {
+      current = index;
+      const img = photos[current];
+      lbImg.src             = img.src;
+      lbImg.alt             = img.alt;
+      lbCaption.textContent = img.dataset.caption || '';
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    function showPrev() { openLightbox((current - 1 + photos.length) % photos.length); }
+    function showNext() { openLightbox((current + 1) % photos.length); }
+
+    photos.forEach((img, i) => {
+      img.closest('.design-piece__img').addEventListener('click', () => openLightbox(i));
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click',  showPrev);
+    lbNext.addEventListener('click',  showNext);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  showPrev();
+      if (e.key === 'ArrowRight') showNext();
+    });
+  </script>
+
+
+</body>
+</html>
