@@ -1,513 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
   <title>Photography — Lexi Randt</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .carousel-section { padding: 72px 0 0; }
+    .carousel-section:last-of-type { padding-bottom: 80px; }
+    .carousel-section__header {
+      display:flex; align-items:baseline; justify-content:space-between;
+      padding-bottom:24px; border-bottom:1px solid var(--color-border); margin-bottom:0;
+    }
+    .carousel-section__title {
+      font-family:var(--font-display); font-size:clamp(28px,4vw,48px);
+      font-weight:400; line-height:1;
+    }
+    .carousel-section__counter {
+      font-size:12px; font-weight:500; letter-spacing:.16em;
+      text-transform:uppercase; color:var(--color-muted); font-variant-numeric:tabular-nums;
+    }
+    .carousel { position:relative; overflow:hidden; cursor:grab; user-select:none; height:520px; }
+    .carousel.is-dragging { cursor:grabbing; }
+    .carousel__track {
+      display:flex; height:100%; will-change:transform;
+      transition:transform .55s cubic-bezier(.25,.46,.45,.94);
+    }
+    .carousel.is-dragging .carousel__track { transition:none; }
+    .carousel__slide { flex:0 0 auto; position:relative; overflow:hidden; height:100%; }
+    .carousel__slide img {
+      display:block; width:100%; height:100%; object-fit:cover;
+      pointer-events:none; transition:transform .5s ease;
+    }
+    .carousel__slide:hover img { transform:scale(1.02); }
+    .carousel__caption {
+      position:absolute; bottom:0; left:0; right:0; padding:12px 16px;
+      background:linear-gradient(transparent,rgba(10,10,10,.65)); color:#f5f4f0;
+      font-size:12px; letter-spacing:.05em; opacity:0; transition:opacity .35s ease;
+      pointer-events:none;
+    }
+    .carousel__slide:hover .carousel__caption { opacity:1; }
+    .carousel__slide--landscape { width:70%; }
+    .carousel__slide--portrait { width:38%; }
+    .carousel__slide--square { width:42%; }
+    .carousel__slide--full { width:100%; }
+    .carousel__slide + .carousel__slide { margin-left:10px; }
+    .carousel__prev,.carousel__next {
+      position:absolute; top:50%; transform:translateY(-50%); z-index:10;
+      background:rgba(245,244,240,.92); border:none; width:44px; height:44px;
+      border-radius:50%; display:flex; align-items:center; justify-content:center;
+      font-size:20px; color:var(--color-text); cursor:pointer; opacity:0;
+      transition:opacity .25s ease, background .2s; box-shadow:0 2px 12px rgba(0,0,0,.15);
+    }
+    .carousel-section:hover .carousel__prev,.carousel-section:hover .carousel__next { opacity:1; }
+    .carousel__prev:hover,.carousel__next:hover { background:#fff; }
+    .carousel__prev { left:14px; } .carousel__next { right:14px; }
+    .carousel__prev.is-hidden,.carousel__next.is-hidden { opacity:0 !important; pointer-events:none; }
+    .carousel__dots { display:flex; justify-content:center; gap:7px; padding:18px 0 0; }
+    .carousel__dot {
+      width:5px; height:5px; border-radius:50%; background:var(--color-border);
+      border:none; cursor:pointer; padding:0; transition:background .25s ease, transform .25s ease;
+    }
+    .carousel__dot.is-active { background:var(--color-text); transform:scale(1.4); }
+    .photo-lightbox {
+      display:none; position:fixed; inset:0; z-index:200; background:rgba(10,10,10,.95);
+      align-items:center; justify-content:center; padding:24px;
+    }
+    .photo-lightbox.is-open { display:flex; }
+    .photo-lightbox__img {
+      max-width:92vw; max-height:92vh; width:auto; height:auto; object-fit:contain;
+      display:block; box-shadow:0 32px 80px rgba(0,0,0,.6);
+    }
+    .photo-lightbox__caption {
+      position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
+      color:rgba(245,244,240,.55); font-size:13px; letter-spacing:.06em;
+      white-space:nowrap; pointer-events:none;
+    }
+    .photo-lightbox__close,.photo-lightbox__prev,.photo-lightbox__next {
+      position:fixed; background:none; border:none; color:rgba(245,244,240,.6);
+      cursor:pointer; z-index:201; transition:color .2s; line-height:1;
+    }
+    .photo-lightbox__close:hover,.photo-lightbox__prev:hover,.photo-lightbox__next:hover { color:#f5f4f0; }
+    .photo-lightbox__close { top:18px; right:22px; font-size:36px; }
+    .photo-lightbox__prev { top:50%; left:18px; font-size:44px; transform:translateY(-50%); }
+    .photo-lightbox__next { top:50%; right:18px; font-size:44px; transform:translateY(-50%); }
+    @media (max-width:768px) {
+      .carousel { height:300px; }
+      .carousel__slide--landscape { width:88%; }
+      .carousel__slide--portrait { width:60%; }
+      .carousel__slide--square { width:72%; }
+      .carousel__slide--full { width:100%; }
+      .carousel__prev,.carousel__next { opacity:1; width:36px; height:36px; font-size:16px; }
+    }
+  </style>
 </head>
 <body>
 
-
-  <!-- ===================== NAVIGATION ===================== -->
-  <nav class="nav">
-    <div class="nav__inner">
-
-      <a class="nav__logo" href="index.html" aria-label="Home">
-        <img src="images/logo.png" alt="Lexi Randt" style="height: 80px; width: auto; display: block;" />
-      </a>
-      <!-- <a class="nav__logo" href="index.html">Lexi Randt</a> -->
-
-      <ul class="nav__links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">My work</a></li>
-        <li><a href="graphic-design.html">Design</a></li>
-        <li><a href="photography.html">Photography</a></li>
-        <li><a href="randt-resume.html">Resume</a></li>
-      </ul>
-      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-
-  <!-- ===================== PAGE HEADER ===================== -->
-  <div class="photo-header container">
-    <h1>Photography</h1>
-    <p>A collection of photos from client work, class projects & personal shots.</p>
+<nav class="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Home">
+      <img src="images/logo.png" alt="Lexi Randt" style="height:80px;width:auto;display:block;" />
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">My work</a></li>
+      <li><a href="graphic-design.html">Design</a></li>
+      <li><a href="photography.html">Photography</a></li>
+      <li><a href="randt-resume.html">Resume</a></li>
+    </ul>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-
-
-  <!-- =======================================================
-       HOW TO USE
-
-       ADD A CATEGORY — duplicate any .photo-section block.
-       Change the title, count (or remove it), and rows inside.
-
-       ONE image (full width):
-         <div class="photo-row">
-           <div class="photo-item">
-             <img src="images/photo.jpg" alt="Description"
-                  data-caption="Optional caption"/>
-           </div>
-         </div>
-
-       TWO images side by side:
-         <div class="photo-row photo-row--two">
-           <div class="photo-item">
-             <img src="images/a.jpg" alt="..." data-caption="..."/>
-           </div>
-           <div class="photo-item">
-             <img src="images/b.jpg" alt="..." data-caption="..."/>
-           </div>
-         </div>
-
-       Images use their natural proportions automatically.
-       No aspect-ratio needed — just drop in your image.
-
-       data-caption is optional. If present, it appears at
-       the bottom of the lightbox when that image is open.
-
-       Click any image to open the lightbox.
-       Navigate with ← → arrow keys or the on-screen arrows.
-       Close with Escape or the × button.
-  ======================================================= -->
-
-
-  <div class="container">
-
-
-    <!-- =====================================================
-         CATEGORY: Travel
-         Duplicate this whole block for each new category.
-    ====================================================== -->
-    <section class="photo-section">
-
-      <div class="photo-section__header">
-        <h2 class="photo-section__title">Albany Distilling Co.</h2>
-        <span class="photo-section__count">8 photos</span>
-        <!-- Remove the count span if you don't want it -->
-      </div>
-
-      <div class="photo-rows">
-
-        <!-- One image, full width -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Alb/Knickerbocker_Fire.jpg" alt="Albany Distilling Co. Knickerbocker Cocktail"
-                 data-caption="Albany Distilling Co. Knickerbocker Cocktail"/>
-          </div>
-        </div>
-
-        <!-- Two images side by side -->
-        <div class="photo-row photo-row--two">
-          <div class="photo-item">
-            <img src="images/Alb/Orange_Vodka.jpg" alt="ADCO Orange Vodka" 
-                      data-caption="ADCO Orange Vodka"/>
-          </div>
-          <div class="photo-item">
-            <img src="images/Alb/Awakened_Spirit.jpg" alt="ADCO Awakened Spirit"
-                 data-caption="ADCO Awakened Spirit"/>
-          </div>
-        </div>
-
-        <!-- One image, full width -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Alb/Cucumber_Vodka.jpg" alt="ADCO Cucumber Vodka"
-                 data-caption="ADCO Cucumber Vodka"/>
-          </div>
-        </div>
-
-        <!-- One image, full width -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Alb/Cocktail.jpg" alt="Albany Distilling Co. Cocktail"
-                 data-caption="Albany Distilling Co. Cocktail"/>
-          </div>
-        </div>
-
-         <!-- Two images side by side -->
-        <div class="photo-row photo-row--two">
-          <div class="photo-item">
-            <img src="images/Alb/Ironweed_Whiskey.jpg" alt="ADCO Orange Vodka" 
-                      data-caption="ADCO Orange Vodka"/>
-          </div>
-          <div class="photo-item">
-            <img src="images/Alb/AlbCo_Cheers.jpg" alt="ADCO Awakened Spirit"
-                 data-caption="ADCO Awakened Spirit"/>
-          </div>
-        </div>
-
-        <!-- One image, full width -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Alb/ADCO_Barrels.jpg" alt="Albany Distilling Co. Barrels"
-                 data-caption="Albany Distilling Co. Barrels"/>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =====================================================
-         CATEGORY: Nature & Landscape
-    ====================================================== -->
-    <section class="photo-section">
-
-      <div class="photo-section__header">
-        <h2 class="photo-section__title">Nature & Landscape</h2>
-        <span class="photo-section__count">17 photos</span>
-      </div>
-
-      <div class="photo-rows">
-
-        <!-- One image, full width -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/Robin 7:8:26.jpeg" alt="American Robin"/>
-          </div>
-        </div>
-
-        <!-- Two images side by side -->
-        <div class="photo-row photo-row--two">
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/matterhorn-3-15-23.JPEG" alt="Matterhorn"/>
-          </div>
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/palm.jpeg" alt="Palm Tree"/>
-          </div>
-        </div>
-
-        <!-- One image, full width -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/waterfall.jpg" alt="Fingerlakes Waterfall"
-                 data-caption="Fingerlakes Waterfall, 2024"/>
-          </div>
-        </div>
-
-        <!-- One image, full width -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/alaska-sunsetLR.jpeg" alt="Alaska Sunset"
-                 data-caption="Alaska Sunset, 2025"/>
-          </div>
-        </div>
-
-        <!-- Two images side by side -->
-        <div class="photo-row photo-row--two">
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/background.jpg" alt="Water Reflection"/>
-          </div>
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/Tulips-3.JPG" alt="Tulips"/>
-          </div>
-        </div>
-
-        <!-- One image, full width -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/Tulips-4.JPG" alt="Tulips"
-                 data-caption="Seagull"/>
-          </div>
-        </div>
-
-        <!-- One image, full width -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/seagull2.jpg" alt="Seagull"
-                 data-caption="Seagull"/>
-          </div>
-        </div>
-
-        <!-- Two images side by side -->
-        <div class="photo-row photo-row--two">
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/zz-plant.jpg" alt="ZZ Plant"/>
-          </div>
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/Tulips-1.JPG" alt="Tulips"/>
-          </div>
-        </div>
-
-        <!-- One image, full width -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/large-format.jpg" alt="Tulip"
-                 data-caption="Tulip"/>
-          </div>
-        </div>
-
-        <!-- Two images side by side -->
-        <div class="photo-row photo-row--two">
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/Mantis.jpg" alt="Mantis"/>
-          </div>
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/chipmunk.jpg" alt="Chipmunk"
-                 data-caption="Chipmunk"/>
-          </div>
-        </div>
-
-        <!-- One image, full width -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/orb1.jpg" alt="Spotted Orb Weaver"/>
-          </div>
-        </div>
-
-        <!-- Two images side by side -->
-        <div class="photo-row photo-row--two">
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/Ketchican_2025_Randt.jpeg" alt="Matterhorn"/>
-          </div>
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/Veytaux-Municipality-Switzerland-3-19-23.jpeg" alt="Palm Tree"/>
-          </div>
-        </div>
-
-        <!-- One image, full width -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Nature&Landscape/SELF-DIRECTED-6 copy.jpg" alt="Flower"/>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =====================================================
-         CATEGORY: Architecture
-    ====================================================== -->
-    <section class="photo-section">
-
-      <div class="photo-section__header">
-        <h2 class="photo-section__title">Architecture & The Manmade</h2>
-        <span class="photo-section__count">9 photos</span>
-      </div>
-
-      <div class="photo-rows">
-
-        <!-- One image -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Architecture&Manmade/mimic-5.jpg" alt="Architecture"/>
-          </div>
-        </div>
-
-        <!-- Two images side by side -->
-        <div class="photo-row photo-row--two">
-          <div class="photo-item">
-            <img src="images/Architecture&Manmade/horse.jpeg" alt="Horse Statue Albany"/>
-          </div>
-          <div class="photo-item">
-            <img src="images/Architecture&Manmade/gateway-arch-national-park2-16-21.jpeg" alt="Gateway National Arch"/>
-          </div>
-        </div>
-
-        <!-- One image -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Architecture&Manmade/security-camera2.jpg" alt="Security Camera"/>
-          </div>
-        </div>
-
-        <!-- Two images side by side -->
-        <div class="photo-row photo-row--two">
-          <div class="photo-item">
-            <img src="images/Architecture&Manmade/albany-buildings.jpg" alt="Albany Buildings"/>
-          </div>
-          <div class="photo-item">
-            <img src="images/Architecture&Manmade/houses.jpg" alt="Rooftops"/>
-          </div>
-        </div>
-
-        <!-- One image -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Architecture&Manmade/mimic-4.jpg" alt="Abstract Architecture"/>
-          </div>
-        </div>
-
-        <!-- One image -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Architecture&Manmade/stairs16.jpg" alt="Stairs"/>
-          </div>
-        </div>
-
-        <!-- One image -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Architecture&Manmade/mimic-3.jpg" alt="Architecture"/>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-     <!-- =====================================================
-         CATEGORY: Miscellaneous 
-    ====================================================== -->
-    <section class="photo-section">
-
-      <div class="photo-section__header">
-        <h2 class="photo-section__title">More</h2>
-        <!-- No count here — just removed the span -->
-      </div>
-
-      <div class="photo-rows">
-
-        <!-- One image -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Other-Photography/chartreuse.jpg" alt="Chartreuse"/>
-          </div>
-        </div>
-
-        <!-- One image -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Other-Photography/cheese.jpg" alt="Cheese"/>
-          </div>
-        </div>
-
-
-        <!-- Two images side by side -->
-        <div class="photo-row photo-row--two">
-          <div class="photo-item">
-            <img src="images/Other-Photography/tito.JPG" alt="Man inspectning wine"/>
-          </div>
-          <div class="photo-item">
-            <img src="images/Other-Photography/pretty.JPG" alt="Young woman smiling"/>
-          </div>
-        </div>
-
-        <!-- One image -->
-        <div class="photo-row">
-          <div class="photo-item">
-            <img src="images/Other-Photography/construct-portrait.jpg" alt="Constructed Portrait"/>
-          </div>
-        </div>
-
-      </div>
-    </section>
-    <!-- Add more .photo-section blocks here -->
-
-    <a href="#" class="back-to-top">↑ Back to Top</a>
-    <br><br><br>
-
-
-  </div><!-- /container -->
-
-
-  <!-- ===================== LIGHTBOX =====================
-       Paste this once per page — the JS below drives it.
-  ======================================================= -->
-  <div class="photo-lightbox" id="photoLightbox" role="dialog" aria-modal="true">
-    <button class="photo-lightbox__close" id="lbClose" aria-label="Close">×</button>
-    <button class="photo-lightbox__prev"  id="lbPrev"  aria-label="Previous">‹</button>
-    <button class="photo-lightbox__next"  id="lbNext"  aria-label="Next">›</button>
-    <img class="photo-lightbox__img" id="lbImg" src="" alt=""/>
-    <p class="photo-lightbox__caption" id="lbCaption"></p>
-  </div>
-
-
-  <!-- ===================== CONNECT ===================== -->
-  <section class="connect">
-    <div class="container">
-      <h2 class="connect__heading">Let's connect</h2>
-      <p class="connect__sub">Open to opportunities, work, or simply to talk!</p>
-      <div class="connect__links">
-        <a class="connect__link" href="mailto:ae21rand@siena.edu">Email</a>
-        <a class="connect__link" href="https://www.linkedin.com/in/lexi-r-291688350" target="_blank">LinkedIn</a>
-      </div>
+</nav>
+
+<div class="photo-header container">
+  <h1>Photography</h1>
+  <p>A collection of photos from client work, class projects &amp; personal shots.</p>
+  <p><i>Click any photo to enlarge.</i></p>
+</div>
+
+<div class="container">
+
+  <section class="carousel-section">
+    <div class="carousel-section__header">
+      <h2 class="carousel-section__title">Client Retail Photos</h2>
+      <span class="carousel-section__counter" data-counter>1 / 7</span>
     </div>
+    <div class="carousel" data-carousel>
+      <div class="carousel__track" data-track>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/42Kraus/42 Kraus Rd 00021.webp" alt="Retail photo" data-caption="" /><p class="carousel__caption">Living Room</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/42Kraus/42 Kraus Rd 00025.webp" alt="Retail photo" data-caption="" /><p class="carousel__caption">Bedroom 1</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/42Kraus/42 Kraus Rd 00022.webp" alt="Retail photo" data-caption=" " /><p class="carousel__caption">Bedroom 2</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/42Kraus/42 Kraus Rd 00038.webp" alt="Retail photo" data-caption=" " /><p class="carousel__caption">Kitchen</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/42Kraus/42 Kraus Rd 00036.webp" alt="Retail photo" data-caption=" " /><p class="carousel__caption">Dining Area</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/42Kraus/42 Kraus Rd 00014.webp" alt="Retail photo" data-caption=" " /><p class="carousel__caption">Backyard Pool</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/42Kraus/42 Kraus Rd 00005.webp" alt="Retail photo" data-caption=" " /><p class="carousel__caption">Front of House</p></div>
+      </div>
+      <button class="carousel__prev" data-prev aria-label="Previous">‹</button>
+      <button class="carousel__next" data-next aria-label="Next">›</button>
+    </div>
+    <div class="carousel__dots" data-dots></div>
   </section>
 
+  <section class="carousel-section">
+    <div class="carousel-section__header">
+      <h2 class="carousel-section__title">Albany Distilling Co.</h2>
+      <span class="carousel-section__counter" data-counter>1 / 8</span>
+    </div>
+    <div class="carousel" data-carousel>
+      <div class="carousel__track" data-track>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Alb/Knickerbocker_Fire.webp" alt="Albany Distilling Co. Knickerbocker Cocktail" data-caption="Albany Distilling Co. Knickerbocker Cocktail" /><p class="carousel__caption">Albany Distilling Co. Knickerbocker Cocktail</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Alb/Orange_Vodka.webp" alt="ADCO Orange Vodka" data-caption="ADCO Orange Vodka" /><p class="carousel__caption">ADCO Orange Vodka</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Alb/Awakened_Spirit.webp" alt="ADCO Awakened Spirit" data-caption="ADCO Awakened Spirit" /><p class="carousel__caption">ADCO Awakened Spirit</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Alb/Cucumber_Vodka.webp" alt="ADCO Cucumber Vodka" data-caption="ADCO Cucumber Vodka" /><p class="carousel__caption">ADCO Cucumber Vodka</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Alb/Cocktail.webp" alt="Albany Distilling Co. Cocktail" data-caption="Albany Distilling Co. Cocktail" /><p class="carousel__caption">Albany Distilling Co. Cocktail</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Alb/Ironweed_Whiskey.webp" alt="ADCO Orange Vodka" data-caption="ADCO IronWeed Whiskey" /><p class="carousel__caption">ADCO Ironweed Whiskey</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Alb/AlbCo_Cheers.webp" alt="ADCO Awakened Spirit" data-caption="ADCO Awakened Spirit" /><p class="carousel__caption">ADCO "Cheers!""</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Alb/ADCO_Barrels.webp" alt="Albany Distilling Co. Barrels" data-caption="Albany Distilling Co. Barrels" /><p class="carousel__caption">Albany Distilling Co. Barrels</p></div>
+      </div>
+      <button class="carousel__prev" data-prev aria-label="Previous">‹</button>
+      <button class="carousel__next" data-next aria-label="Next">›</button>
+    </div>
+    <div class="carousel__dots" data-dots></div>
+  </section>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="footer container">
-    <span>© 2026 Lexi Randt</span>
-    <a href="mailto:ae21rand@siena.edu">ae21rand@siena.edu</a>
-  </footer>
+  <section class="carousel-section">
+    <div class="carousel-section__header">
+      <h2 class="carousel-section__title">Nature &amp; Landscape</h2>
+      <span class="carousel-section__counter" data-counter>1 / 18</span>
+    </div>
+    <div class="carousel" data-carousel>
+      <div class="carousel__track" data-track>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Nature&amp;Landscape/alaska-sunsetLR.webp" alt="Alaska Sunset" data-caption="Alaska Sunset, 2025" /><p class="carousel__caption">Alaska Sunset</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Nature&amp;Landscape/Robin 7:8:26.webp" alt="American Robin" /><p class="carousel__caption">American Robin</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Nature&amp;Landscape/matterhorn-3-15-23.webp" alt="Matterhorn" /><p class="carousel__caption">Matterhorn</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Nature&amp;Landscape/palm.webp" alt="Palm Tree" /><p class="carousel__caption">Palm Tree</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Nature&amp;Landscape/waterfall.webp" alt="Fingerlakes Waterfall" data-caption="Fingerlakes Waterfall, 2024" /><p class="carousel__caption">Fingerlakes Waterfall</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Nature&amp;Landscape/Tulips-4.webp" alt="Tulips" data-caption="Tulips" /><p class="carousel__caption">Tulips</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Nature&amp;Landscape/seagull2.webp" alt="Seagull" data-caption="Seagull" /><p class="carousel__caption">Seagull</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Nature&amp;Landscape/Mantis.webp" alt="Mantis" /><p class="carousel__caption">Mantis</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Nature&amp;Landscape/chipmunk.webp" alt="Chipmunk" data-caption="Chipmunk" /><p class="carousel__caption">Chipmunk</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Nature&amp;Landscape/orb1.webp" alt="Spotted Orb Weaver" /><p class="carousel__caption">Spotted Orb Weaver</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Nature&amp;Landscape/Ketchican_2025_Randt.webp" alt="Matterhorn" /><p class="carousel__caption">Ketchican, Alaska</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Nature&amp;Landscape/Veytaux-Municipality-Switzerland-3-19-23.webp" alt="Palm Tree" /><p class="carousel__caption">Switzerland</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Nature&amp;Landscape/SELF-DIRECTED-6 copy.webp" alt="Otherwordly Flora Flower" /><p class="carousel__caption">Otherwordly Flora Flower</p></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Nature&amp;Landscape/large-format.webp" alt="Tulip" data-caption="Tulip" /><p class="carousel__caption">Otherwordly Flora Tulip</p></div>
+      </div>
+      <button class="carousel__prev" data-prev aria-label="Previous">‹</button>
+      <button class="carousel__next" data-next aria-label="Next">›</button>
+    </div>
+    <div class="carousel__dots" data-dots></div>
+  </section>
 
+  <section class="carousel-section">
+    <div class="carousel-section__header">
+      <h2 class="carousel-section__title">Architecture &amp; The Manmade</h2>
+      <span class="carousel-section__counter" data-counter>1 / 6</span>
+    </div>
+    <div class="carousel" data-carousel>
+      <div class="carousel__track" data-track>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Architecture&amp;Manmade/mimic-5.webp" alt="Architecture" /></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Architecture&amp;Manmade/horse.webp" alt="Horse Statue Albany" /></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Architecture&amp;Manmade/gateway-arch-national-park2-16-21.webp" alt="Gateway National Arch" /></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Architecture&amp;Manmade/mimic-4.webp" alt="Abstract Architecture" /></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Architecture&amp;Manmade/stairs16.webp" alt="Stairs" /></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Architecture&amp;Manmade/mimic-3.webp" alt="Architecture" /></div>
+      </div>
+      <button class="carousel__prev" data-prev aria-label="Previous">‹</button>
+      <button class="carousel__next" data-next aria-label="Next">›</button>
+    </div>
+    <div class="carousel__dots" data-dots></div>
+  </section>
 
-  <script src="main.js"></script>
+  <section class="carousel-section" style="padding-bottom:80px;">
+    <div class="carousel-section__header">
+      <h2 class="carousel-section__title">More</h2>
+      <span class="carousel-section__counter" data-counter>1 / 4</span>
+    </div>
+    <div class="carousel" data-carousel>
+      <div class="carousel__track" data-track>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Other-Photography/chartreuse.webp" alt="Chartreuse" /></div>
+        <div class="carousel__slide carousel__slide--landscape"><img src="images/Other-Photography/cheese.webp" alt="Cheese" /></div>
+        <div class="carousel__slide carousel__slide--portrait"><img src="images/Other-Photography/pretty.webp" alt="Young woman smiling" /></div>
+        <div class="carousel__slide carousel__slide--portrait"><img src="images/Other-Photography/construct-portrait.webp" alt="Constructed Portrait" /></div>
+      </div>
+      <button class="carousel__prev" data-prev aria-label="Previous">‹</button>
+      <button class="carousel__next" data-next aria-label="Next">›</button>
+    </div>
+    <div class="carousel__dots" data-dots></div>
+  </section>
 
-  <script>
-    /* =====================================================
-       LIGHTBOX
-       Collects every .photo-item img on the page into a
-       single array so you can navigate between them all.
-    ===================================================== */
-    const lightbox  = document.getElementById('photoLightbox');
-    const lbImg     = document.getElementById('lbImg');
-    const lbCaption = document.getElementById('lbCaption');
-    const lbClose   = document.getElementById('lbClose');
-    const lbPrev    = document.getElementById('lbPrev');
-    const lbNext    = document.getElementById('lbNext');
+  <a href="#" class="back-to-top">↑ Back to Top</a>
+  <br><br><br>
+</div>
 
-    // Build a flat list of every photo on the page
-    const photos = Array.from(document.querySelectorAll('.photo-item img'));
-    let current  = 0;
+<div class="photo-lightbox" id="photoLightbox" role="dialog" aria-modal="true">
+  <button class="photo-lightbox__close" id="lbClose" aria-label="Close">×</button>
+  <button class="photo-lightbox__prev" id="lbPrev" aria-label="Previous">‹</button>
+  <button class="photo-lightbox__next" id="lbNext" aria-label="Next">›</button>
+  <img class="photo-lightbox__img" id="lbImg" src="" alt="" />
+  <p class="photo-lightbox__caption" id="lbCaption"></p>
+</div>
 
-    function openLightbox(index) {
-      current = index;
-      const img = photos[current];
-      lbImg.src           = img.src;
-      lbImg.alt           = img.alt;
-      lbCaption.textContent = img.dataset.caption || '';
-      lightbox.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
-    }
+<section class="connect">
+  <div class="container">
+    <h2 class="connect__heading">Let's connect</h2>
+    <p class="connect__sub">Open to opportunities, work, or simply to talk!</p>
+    <div class="connect__links">
+      <a class="connect__link" href="mailto:ae21rand@siena.edu">Email</a>
+      <a class="connect__link" href="https://www.linkedin.com/in/lexi-r-291688350" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
 
-    function closeLightbox() {
-      lightbox.classList.remove('is-open');
-      lbImg.src = '';
-      document.body.style.overflow = '';
-    }
+<footer class="footer container">
+  <span>© 2026 Lexi Randt</span>
+  <a href="mailto:ae21rand@siena.edu">ae21rand@siena.edu</a>
+</footer>
 
-    function showPrev() {
-      openLightbox((current - 1 + photos.length) % photos.length);
-    }
+<script src="main.js"></script>
+<script>
+  document.querySelectorAll('.carousel-section').forEach(section => {
+    const track = section.querySelector('[data-track]');
+    const prevBtn = section.querySelector('[data-prev]');
+    const nextBtn = section.querySelector('[data-next]');
+    const dotsWrap = section.querySelector('[data-dots]');
+    const counter = section.querySelector('[data-counter]');
+    const slides = Array.from(track.children);
+    const total = slides.length;
+    let current = 0;
+    let dragStartX = 0;
+    let dragDeltaX = 0;
+    let dragging = false;
+    let wasDragged = false;
 
-    function showNext() {
-      openLightbox((current + 1) % photos.length);
-    }
-
-    // Attach click to each photo
-    photos.forEach((img, i) => {
-      img.parentElement.addEventListener('click', () => openLightbox(i));
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel__dot';
+      dot.setAttribute('aria-label', `Slide ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
     });
 
-    // Controls
-    lbClose.addEventListener('click', closeLightbox);
-    lbPrev.addEventListener('click',  showPrev);
-    lbNext.addEventListener('click',  showNext);
+    const dots = Array.from(dotsWrap.children);
 
-    // Click backdrop to close
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) closeLightbox();
+    function goTo(index) {
+      current = Math.max(0, Math.min(index, total - 1));
+      let offset = 0;
+      for (let i = 0; i < current; i++) offset += slides[i].offsetWidth + 10;
+      track.style.transform = `translateX(-${offset}px)`;
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === current));
+      if (counter) counter.textContent = `${current + 1} / ${total}`;
+      prevBtn.classList.toggle('is-hidden', current === 0);
+      nextBtn.classList.toggle('is-hidden', current === total - 1);
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    slides.forEach((slide, i) => {
+      slide.addEventListener('click', () => {
+        if (wasDragged) return;
+        if (i !== current) goTo(i);
+        else {
+          const img = slide.querySelector('img');
+          if (img) openLightbox(img);
+        }
+      });
     });
 
-    // Keyboard navigation
-    document.addEventListener('keydown', e => {
-      if (!lightbox.classList.contains('is-open')) return;
-      if (e.key === 'Escape')     closeLightbox();
-      if (e.key === 'ArrowLeft')  showPrev();
-      if (e.key === 'ArrowRight') showNext();
+    track.addEventListener('mousedown', e => {
+      dragStartX = e.clientX; dragDeltaX = 0; dragging = true; wasDragged = false;
+      track.style.transition = 'none';
     });
-  </script>
+    window.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      dragDeltaX = e.clientX - dragStartX;
+      if (Math.abs(dragDeltaX) > 8) wasDragged = true;
+    });
+    window.addEventListener('mouseup', () => {
+      if (!dragging) return;
+      dragging = false; track.style.transition = '';
+      if (Math.abs(dragDeltaX) > 60) dragDeltaX < 0 ? goTo(current + 1) : goTo(current - 1);
+      else goTo(current);
+    });
 
+    track.addEventListener('touchstart', e => {
+      dragStartX = e.touches[0].clientX; dragDeltaX = 0; wasDragged = false;
+    }, { passive:true });
+    track.addEventListener('touchmove', e => {
+      dragDeltaX = e.touches[0].clientX - dragStartX;
+      if (Math.abs(dragDeltaX) > 8) wasDragged = true;
+    }, { passive:true });
+    track.addEventListener('touchend', () => {
+      if (Math.abs(dragDeltaX) > 60) dragDeltaX < 0 ? goTo(current + 1) : goTo(current - 1);
+      else goTo(current);
+    });
 
+    goTo(0);
+  });
+
+  const lb = document.getElementById('photoLightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCaption = document.getElementById('lbCaption');
+  const lbClose = document.getElementById('lbClose');
+  const lbPrev = document.getElementById('lbPrev');
+  const lbNext = document.getElementById('lbNext');
+  const allImgs = Array.from(document.querySelectorAll('.carousel__slide img'));
+  let lbCurrent = 0;
+
+  function openLightbox(img) {
+    lbCurrent = allImgs.indexOf(img);
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbCaption.textContent = img.dataset.caption || '';
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('is-open');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  function lbShowPrev() {
+    lbCurrent = (lbCurrent - 1 + allImgs.length) % allImgs.length;
+    const img = allImgs[lbCurrent];
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    lbCaption.textContent = img.dataset.caption || '';
+  }
+
+  function lbShowNext() {
+    lbCurrent = (lbCurrent + 1) % allImgs.length;
+    const img = allImgs[lbCurrent];
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    lbCaption.textContent = img.dataset.caption || '';
+  }
+
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', lbShowPrev);
+  lbNext.addEventListener('click', lbShowNext);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lbShowPrev();
+    if (e.key === 'ArrowRight') lbShowNext();
+  });
+</script>
 </body>
 </html>
