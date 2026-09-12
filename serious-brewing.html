@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Serious Brewing - Lexi Randt</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 
 <!-- Lightbox overlay -->
 <div class="lightbox" id="lightbox">
   <button class="lightbox__close" id="lightboxClose" aria-label="Close">×</button>
-  <img  class="lightbox__img" id="lightboxImg" src="" alt="Enlarged view"  style="display:none"/>
+  <img class="lightbox__img" id="lightboxImg" src="" alt="Enlarged view" style="display:none" />
   <iframe class="lightbox__pdf" id="lightboxPdf" src="" title="PDF viewer" style="display:none"></iframe>
 </div>
 
@@ -48,7 +51,7 @@
   <div class="project-hero">
     <!-- <div class="img-placeholder" style="min-height:400px;">Hero image</div> -->
     <img src="images/SeriousBrewing/SB Hero Image.jpg" alt="Project One hero image">
-  
+
   </div>
 
 
@@ -64,14 +67,15 @@
       <div class="project-meta__overview">
         <p class="label">Overview</p>
         A website redesign for a client in the beverage industry.
-        <p><br> Check out the new site: 
-            <a href="https://www.seriousbrewingco.com" target="_blank">www.seriousbrewingco.com</a></p>
+        <p><br> Check out the new site:
+          <a href="https://www.seriousbrewingco.com" target="_blank">www.seriousbrewingco.com</a>
+        </p>
 
       </div>
 
       <div class="project-meta__details">
         <strong>Role</strong>
-        Web Designer<br/>
+        Web Designer<br />
 
         <strong>Timeline</strong>
         Fall 2025 – Spring 2026
@@ -88,13 +92,163 @@
        BODY SECTIONS
   ========================================================== -->
 
+  <!-- SECTION: The Project -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>The Project</h2>
+        <p>
+          Through the Siena Beverage Institute, students get the opportunity to work with real clients in the beverage
+          industry. For this project, our client was Bill, the owner of Serious Brewing Co., who was looking for a
+          complete website redesign.
+          <br><br>
+          We started working with him in Fall 2025 by discussing his goals and reviewing the existing website. Some of
+          the main issues we noticed were confusing navigation, an overwhelming color scheme, and important information
+          that was difficult to find. Our goal was to create a cleaner, more organized, and easier-to-use experience.
+        </p>
+
+        <!-- IMAGE B: contained — same width as text column -->
+        <div class="img-contained">
+          <img src="images/SeriousBrewing/old-website.png" alt="Old serious brewing website home page." />
+          <!-- No image? <div class="img-placeholder">Image</div> -->
+        </div>
+        <p class="img-caption">The old serious brewing website home page. That yellow color <i>seriously</i> needed to
+          go.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION: Finding a Direction -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>Finding a Direction</h2>
+        <p>
+          For this project, I didn't start with low-fidelity sketches or wireframes. Instead, I brainstormed different
+          ideas and experimented with layouts until I found a beer photo on Pexels that really stood out to me. Because
+          Pexels offers high-quality photos that are free for commercial use, I knew it could be a strong choice for the
+          client while also elevating the visual direction of the site.
+          <br><br>
+          Once I found the image, the rest of the visual direction started to come together. I built the layout and
+          and color scheme around the photo, which helped give the site a more consistent look. Since the site only
+          needed five
+          main pages, the hierarchy and navigation also came together fairly naturally.
+        </p>
+
+        <!-- IMAGE B: contained — same width as text column -->
+        <div class="img-contained">
+          <img src="images/SeriousBrewing/Home-Page.png" alt="New serious brewing website home page." />
+          <!-- No image? <div class="img-placeholder">Image</div> -->
+        </div>
+        <p class="img-caption">The new website homepage design (desktop version).</p>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION: Designing Through Feedback -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>Designing Through Feedback</h2>
+        <p>
+          I developed the design in Figma and presented the ideas to Bill for feedback. His positive response to the
+          initial direction helped confirm that the visual style was heading in the right direction.
+          From there, I continued refining the layout, navigation, content organization, imagery, and visual hierarchy
+          based on our conversations.
+          <br><br>
+          Design → Present → Get Feedback → Refine → Repeat
+          <br><br>
+          This process taught me how much a real client's feedback can influence a design. It also helped me become more
+          comfortable making design decisions while still being open to changing them based on someone else's
+          perspective.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION: From Figma to a Working Website -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>From Figma to a WordPress</h2>
+        <p>
+          Once the design was finalized, my partner took the lead on implementing it in WordPress. Since our roles were
+          split between design and development, the transition from Figma to the live site became a very collaborative
+          part of the project.
+          <br><br>
+          As the implementation progressed, we communicated about how different parts of the design would translate to
+          WordPress and worked through anything that needed clarification or adjustment. My partner also walked me
+          through how the WordPress site worked, which gave me a better understanding of what happens after a design
+          leaves Figma.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION: Handoff & Reflection -->
+  <section class="section">
+    <div class="container--text">
+      <div class="prose">
+
+        <h2>Handoff & Reflection</h2>
+        <p>
+          As part of the final handoff, I created a knowledge-transfer package for Bill with instructions on how to edit
+          and maintain his new website. The goal was to make sure he could confidently manage the site after the project
+          was finished.
+
+          <!-- IMAGE B: contained — same width as text column -->
+        <div class="img-contained">
+          <img src="images/SeriousBrewing/Handoff-Package-SB.png" alt="New serious brewing website home page." />
+          <!-- No image? <div class="img-placeholder">Image</div> -->
+        </div>
+
+        <p class="img-caption">Handoff Package (cover and index).</p>
+        Working on Serious Brewing Co. gave me the opportunity to take on a real-world design project with an actual
+        client, from the initial ideas and feedback through the final website. It was different from a typical
+        classroom project because the design had to work for someone else's goals, not simply my own.
+        <br><br>
+        I am proud of the experience because it gave me a chance to practice communicating with a client, making design
+        decisions with real needs in mind, and seeing my work become part of a functional website.
+        <br><br>
+        <b>
+          View the figma mockup
+          <a href="https://www.figma.com/design/UbBPwUqBaiw5hYUdhVVurh/Serious-Brewing-Web-Redesign?node-id=0-1&t=P7oSYwy5Q25Bv21k-1"
+            target="_blank">here</a>.
+        </b>
+        <br>
+        <b>View the newly redesigned website
+          <a href="https://www.seriousbrewingco.com" target="_blank">here</a>.
+        </b>
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
   <hr class="divider" />
 
   <section class="section">
 
     <!-- IMAGE A: full width — bleeds to page edges -->
     <div class="img-full">
-      <img src="images/SeriousBrewing/Serious Brewing Poster.png" alt="Process diagram"/>
+      <img src="images/SeriousBrewing/Serious Brewing Poster.png" alt="Process diagram" />
       <!-- No image? <div class="img-placeholder" style="min-height:400px;">Process diagram</div> -->
     </div>
     <div class="container--text">
@@ -103,7 +257,7 @@
 
   </section>
 
-  <hr class="divider"/>
+  <hr class="divider" />
 
   <!-- ===================== NEXT PROJECT =====================
        Update href and the project title text.
@@ -114,7 +268,7 @@
       <p class="next-project__label">Back</p>
       <p class="next-project__title">View all projects</p>
     </a>
-     <a href="projects.html" class="next-project__arrow">→</a>
+    <a href="projects.html" class="next-project__arrow">→</a>
   </div>
 
 
@@ -140,4 +294,5 @@
 
   <script src="main.js"></script>
 </body>
+
 </html>
