@@ -6,7 +6,7 @@
   --color-bg:       #f5f4f0;
   --color-text:     #1a1a1a;
   --color-muted:    #6b6b6b;
-  --color-accent:   #547ecc;
+  --color-accent:   #2E5399;
   --color-border:   #ddd9d3;
   --color-nav-bg:   #1a1a1a;
   --color-nav-text: #f5f4f0;
@@ -249,7 +249,7 @@ a:hover { text-decoration: underline; }
 }
 .hero__name {
   font-family: var(--font-display);
-  font-size: clamp(40px, 6vw, 80px);
+  font-size: clamp(75px, 6vw, 80px);
   font-weight: 400;
   line-height: 1.05;
   margin-bottom: 28px;
@@ -257,7 +257,7 @@ a:hover { text-decoration: underline; }
 .hero__name em { font-style: italic; color: var(--color-accent); }
 .hero__tagline {
   font-family: var(--font-display);
-  font-size: clamp(20px, 2.5vw, 30px);
+  font-size: clamp(35px, 2.5vw, 30px);
   font-weight: 400;
   margin-bottom: 24px;
 }
@@ -376,7 +376,7 @@ a:hover { text-decoration: underline; }
   margin-bottom: 16px;
 }
 .project-card__desc {
-  font-size: 15px;
+  font-size: 18px;
   color: var(--color-muted);
   line-height: 1.7;
   margin-bottom: 24px;
@@ -565,7 +565,6 @@ a:hover { text-decoration: underline; }
   font-size: 22px;
   color: var(--color-muted);
   margin-top: 16px;
-  max-width: 480px;
 }
 
 /* ── Category section ──────────────────────────────────────
@@ -767,7 +766,6 @@ a:hover { text-decoration: underline; }
   font-size: 22px;
   color: var(--color-muted);
   margin-top: 16px;
-  max-width: 480px;
 }
 
 
