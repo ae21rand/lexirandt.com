@@ -417,7 +417,7 @@ a:hover { text-decoration: underline; }
 }
 .project-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .project-meta__overview { font-size: 20px; color: var(--color-muted); line-height: 1.75; }
-.project-meta__details  { font-size: 18px; color: var(--color-muted); line-height: 1.9; }
+.project-meta__details  { font-size: 20px; color: var(--color-muted); line-height: 1.9; }
 .project-meta__details strong {
   display: block;
   font-size: 18px;
